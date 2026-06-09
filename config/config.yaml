@@ -1,0 +1,30 @@
+seed: 42
+
+classes:
+  - cs.AI
+  - cs.LG
+  - cs.CL
+  - cs.CV
+  - cs.CR
+  - cs.RO
+  - cs.DS
+  - cs.SE
+
+data:
+  samples_per_class: 7000
+  max_seq_length: 256
+  splits:
+    train: 0.8
+    val: 0.1
+    test: 0.1
+
+models:
+  transformer_name: distilbert-base-uncased
+  baseline: tfidf_logreg
+
+paths:
+  raw_data: data/raw
+  processed_data: data/processed
+  results: results
+  figures: results/figures
+  metrics: results/metrics
