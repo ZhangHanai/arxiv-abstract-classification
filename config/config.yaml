@@ -11,6 +11,7 @@ classes:
   - cs.SE
 
 data:
+  raw_filename: arxiv-metadata-oai-snapshot.json
   samples_per_class: 7000
   max_seq_length: 256
   splits:
