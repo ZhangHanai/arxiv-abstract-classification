@@ -1,0 +1,313 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "started_utc": "2026-10-04T13:36:07.665505+00:00",
+  "experiment": {
+    "experiment_name": "classical_baselines_v1",
+    "threads": 1,
+    "tfidf": {
+      "ngram_range": [
+        1,
+        2
+      ],
+      "min_df": 3,
+      "max_df": 1.0,
+      "max_features": 100000,
+      "sublinear_tf": true,
+      "lowercase": true,
+      "strip_accents": null,
+      "stop_words": null,
+      "token_pattern": "(?u)\\b\\w\\w+\\b",
+      "norm": "l2",
+      "use_idf": true,
+      "smooth_idf": true
+    },
+    "models": {
+      "logistic_regression": {
+        "C": [
+          1.0,
+          4.0
+        ],
+        "max_iter": 1000,
+        "tol": 0.0001
+      },
+      "linear_svm": {
+        "C": [
+          1.0,
+          4.0
+        ],
+        "max_iter": 5000,
+        "tol": 0.0001
+      }
+    }
+  },
+  "data_configuration": {
+    "seed": 42,
+    "classes": [
+      "cs.AI",
+      "cs.LG",
+      "cs.CL",
+      "cs.CV",
+      "cs.CR",
+      "cs.RO",
+      "cs.DS",
+      "cs.SE"
+    ],
+    "data": {
+      "raw_filename": "arxiv-metadata-oai-snapshot.curated.jsonl",
+      "decode_errors": "strict",
+      "samples_per_class": 7000,
+      "max_seq_length": 256,
+      "splits": {
+        "train": 0.8,
+        "val": 0.1,
+        "test": 0.1
+      }
+    }
+  },
+  "source_identity": {
+    "provider": {
+      "schema_version": 1,
+      "provider": "Kaggle",
+      "dataset_ref": "Cornell-University/arxiv",
+      "dataset_id": 612177,
+      "title": "arXiv Dataset",
+      "source_page": "https://www.kaggle.com/datasets/Cornell-University/arxiv",
+      "metadata_endpoint": "https://www.kaggle.com/api/v1/datasets/view/Cornell-University/arxiv",
+      "dataset_version": 306,
+      "version_created_utc": "2026-10-03T23:53:00.087Z",
+      "version_notes": "Adds recent announced papers",
+      "provider_reported_total_bytes": 5589459042,
+      "metadata_license": "CC0: Public Domain",
+      "expected_raw_filename": "arxiv-metadata-oai-snapshot.json",
+      "archive_download_endpoint": "https://www.kaggle.com/api/v1/datasets/download/Cornell-University/arxiv?datasetVersionNumber=306",
+      "archive_content_length_observed": 1852304107,
+      "archive_bytes_observed": 1852304107,
+      "archive_sha256_observed": "b078129ac784a5a67901e06b8bed934180810a36c72eb9dacce78464d33143fa",
+      "raw_bytes_observed": 5589459042,
+      "raw_sha256_observed": "b5c73be5958b20f4c07ea30a9352941bddfe59fed943dde6614e6d3415347c88",
+      "zip_member_crc32_observed": "69fd6fa2",
+      "zip_member_timestamp_observed": "2026-10-03 23:55:30 (ZIP local timestamp; timezone unspecified)",
+      "acquisition": "Manually initiated download of the official version-pinned Kaggle archive, then local extraction; no third-party mirror or repository downloader. The public archive endpoint presented no login or additional dataset-terms prompt."
+    },
+    "original_source": {
+      "filename": "arxiv-metadata-oai-snapshot.json",
+      "bytes": 5589459042,
+      "sha256": "b5c73be5958b20f4c07ea30a9352941bddfe59fed943dde6614e6d3415347c88"
+    },
+    "curated_source": {
+      "filename": "arxiv-metadata-oai-snapshot.curated.jsonl",
+      "bytes": 1108749510,
+      "sha256": "d0100471cc2da0ec4d998e5754c79fef0f9bef2271c69fe8efd861a90c66ae68"
+    }
+  },
+  "split_identity": {
+    "train": {
+      "filename": "train.parquet",
+      "bytes": 31718125,
+      "sha256": "57a86d4b1eefe02fde53f98666d152170b9a18bd6b610d75332344dc1bf8c1a0",
+      "ordered_rows_sha256": "151bafcaa005992c08db9927a997497b0d5cebaaeb1c7339e07fc55f20f16773",
+      "rows": 44800,
+      "per_class": {
+        "cs.AI": 5600,
+        "cs.LG": 5600,
+        "cs.CL": 5600,
+        "cs.CV": 5600,
+        "cs.CR": 5600,
+        "cs.RO": 5600,
+        "cs.DS": 5600,
+        "cs.SE": 5600
+      }
+    },
+    "val": {
+      "filename": "val.parquet",
+      "bytes": 3955377,
+      "sha256": "bb86a1bf21c90e65afb52344bf4e2d6fe08bc1654deac66b3c38fe0b6f82ac34",
+      "ordered_rows_sha256": "f057f724d1714b8c495baf41339a88586a06388eba766a9f3bc36565e67fc6ab",
+      "rows": 5600,
+      "per_class": {
+        "cs.AI": 700,
+        "cs.LG": 700,
+        "cs.CL": 700,
+        "cs.CV": 700,
+        "cs.CR": 700,
+        "cs.RO": 700,
+        "cs.DS": 700,
+        "cs.SE": 700
+      }
+    },
+    "test": {
+      "filename": "test.parquet",
+      "bytes": 3976152,
+      "sha256": "539302fa2ae5f1e925b3ea8cbcee57731134ecbcb462bef8f0bd1556013e06e8",
+      "ordered_rows_sha256": "383ca28352286783a28a4c3ccf63cf9db39a544ba9903c18a7071a9e9e39776a",
+      "rows": 5600,
+      "per_class": {
+        "cs.AI": 700,
+        "cs.LG": 700,
+        "cs.CL": 700,
+        "cs.CV": 700,
+        "cs.CR": 700,
+        "cs.RO": 700,
+        "cs.DS": 700,
+        "cs.SE": 700
+      }
+    }
+  },
+  "public_loader": "src.data.dataset.load_splits",
+  "label_to_id": {
+    "cs.AI": 0,
+    "cs.LG": 1,
+    "cs.CL": 2,
+    "cs.CV": 3,
+    "cs.CR": 4,
+    "cs.RO": 5,
+    "cs.DS": 6,
+    "cs.SE": 7
+  },
+  "selection_rule": "maximum validation macro_f1; exact ties use first listed C",
+  "fit_split": "train",
+  "selection_split": "val",
+  "final_evaluation_split": "test",
+  "refit_on_train_plus_validation": false,
+  "test_prediction_calls": {
+    "logistic_regression": 1,
+    "linear_svm": 1
+  },
+  "data_loading_and_identity_seconds": 2.0430227000033483,
+  "provenance": {
+    "command": "python -B -m src.models.baselines --config config/real_data.yaml --experiment-config config/classical_baselines.yaml --verified-manifest results/real_data_validation/run_manifest.json --output-dir results/classical_baselines/real_v1",
+    "git_head_at_run": "77b2c7376e5740c1064b790c0dfecc6dbe10d4f5",
+    "working_tree_dirty_at_run": false,
+    "code_sha256": {
+      "config/real_data.yaml": "2c277bee921163758fee53ac58287a4a792b99b20b14b07a3dd27cd0927f2c28",
+      "config/classical_baselines.yaml": "39196a2990d7db5b56ddd514d60bd7cd8b0cd0dc52933e985d816949da3df197",
+      "requirements.txt": "45a798589105e12713f7b60f08e3d50c19d8b752365bec9e3ce6703a7b2386e3",
+      "src/config.py": "d28e2fea31733f0ad1b1c65d9bd9af566085c49cbbf534498f8306baa838e8bd",
+      "src/data/dataset.py": "a4bd3b11fa98f437a0e571eebd1994cba38d2671015e0d3bd28cef3829eb9aba",
+      "src/data/integrity.py": "49937e1399d1ffa0cc51cbc62caada49ceda7b14e63477df7f1c897df15b7732",
+      "src/data/profile.py": "78d8ab106f0415901c0d4f4f34c3753f2ffe56887c8148e72bd44dbc940b4a8b",
+      "src/evaluation.py": "760540336d76d1204fbecb290f3ecec3e1b69d2a91a12e4ea6b2026e090384c0",
+      "src/models/baselines.py": "5709f1fb567f975d4d433381ca1da933ef278875fe27622576e2f54c5d4266b6",
+      "src/models/baseline_report.py": "88b9ef64bf867f0a0c7c5461452aae79c070c4129646e782e16703bb0e5ca5c5"
+    },
+    "verified_manifest_sha256": "96cfc0831335c1b8857d161232b823d64f9652332a67a24f00f0832427cd9e15",
+    "verified_profile_sha256": "6284576a1e916aeedbd0aaa1bb563368450d59eb25a2303436bdfd7665ccf44a"
+  },
+  "timing_definition": "Wall-clock seconds; training includes TF-IDF fit/transform and classifier fit; prediction includes transform and predict; diagnostics timed separately; I/O excluded.",
+  "runtime": {
+    "python": "3.13.5",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 186 Stepping 2, GenuineIntel",
+    "logical_cpu_count": 20,
+    "packages": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pandas": "3.0.6",
+      "pyarrow": "25.0.1",
+      "pyyaml": "6.0.3",
+      "scikit-learn": "1.9.1",
+      "threadpoolctl": "3.7.0",
+      "joblib": "1.6.0",
+      "pytest": "9.1.1"
+    },
+    "threadpools": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libscipy_openblas",
+        "filepath": "D:\\AI-Projects\\.audit-envs\\arxiv-abstract-classification-20261004\\Lib\\site-packages\\numpy.libs\\libscipy_openblas64_-ed4f167a5330424524f45258e7ca2c8d.dll",
+        "version": "0.3.34.106.0",
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 1,
+        "prefix": "vcomp",
+        "filepath": "D:\\AI-Projects\\.audit-envs\\arxiv-abstract-classification-20261004\\Lib\\site-packages\\sklearn\\.libs\\vcomp140.dll",
+        "version": null
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 1,
+        "prefix": "libscipy_openblas",
+        "filepath": "D:\\AI-Projects\\.audit-envs\\arxiv-abstract-classification-20261004\\Lib\\site-packages\\scipy.libs\\libscipy_openblas-197ee2fc9b4d071f7e048078cac74115.dll",
+        "version": "0.3.31.dev",
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      }
+    ]
+  },
+  "selection_sha256_before_test": "f7037d1d71c5bc99130d82037b1684fb166ad86b9a8d7b84750855170814ce47",
+  "artifacts": {
+    "logistic_regression": {
+      "logistic_regression/validation/metrics.json": {
+        "bytes": 2340,
+        "sha256": "815d7fc4948d48bfee5246105894c82dcf6462bbb36541488957a018cadef68b"
+      },
+      "logistic_regression/validation/confusion_matrix.csv": {
+        "bytes": 293,
+        "sha256": "7091c0209b66197b0debc54109feba7ca53655ca6d2ef7d379bc2fcad3eb8d51"
+      },
+      "logistic_regression/validation/predictions.parquet": {
+        "bytes": 3959293,
+        "sha256": "fee8a557762f0ac5915f07156d5a5bb9d74c0e379dab6386e26998978e643f0c"
+      },
+      "logistic_regression/test/metrics.json": {
+        "bytes": 2325,
+        "sha256": "6b451399157e5fd447b2e2ad656b805b875c6ae97709621fee91d02768825e1d"
+      },
+      "logistic_regression/test/confusion_matrix.csv": {
+        "bytes": 294,
+        "sha256": "43f57840e359896308884201d62ac6681357fdd117bbf6f4ed7260fa76d98435"
+      },
+      "logistic_regression/test/predictions.parquet": {
+        "bytes": 3980068,
+        "sha256": "017bcac71e86a5a70396213176499bb9256e00ec8aa143e18ea0e140b1a96bb8"
+      },
+      "logistic_regression/test/prediction_scores.csv": {
+        "bytes": 982258,
+        "sha256": "9014c8bd015dec3142a9110ca5bd3c83e916140194faac4d693f59b7697e3546"
+      },
+      "logistic_regression/test/high_confidence_errors.csv": {
+        "bytes": 1156,
+        "sha256": "42d89d6d6aeacd0c31d9ad0d07bf82cde41d2f2553b8b8289bc5198e3adce683"
+      }
+    },
+    "linear_svm": {
+      "linear_svm/validation/metrics.json": {
+        "bytes": 2339,
+        "sha256": "6a7ff37707c0fb24860fb34cba216864eeaddbac1085470b3b4614d66998e0ed"
+      },
+      "linear_svm/validation/confusion_matrix.csv": {
+        "bytes": 290,
+        "sha256": "f8d4e6da61210bcbb04d32158db0e1c63428d86c898f71461de3f8a3b63c58e9"
+      },
+      "linear_svm/validation/predictions.parquet": {
+        "bytes": 3959293,
+        "sha256": "af933e99b77c2d775803181b26558830efe7932079e5d2cf04a5d4d30acd8c73"
+      },
+      "linear_svm/test/metrics.json": {
+        "bytes": 2343,
+        "sha256": "a91edeb70cd9d097b53cbb93cb4f6a80bf75cde2eeaa5b541c3d2b15ccf22224"
+      },
+      "linear_svm/test/confusion_matrix.csv": {
+        "bytes": 293,
+        "sha256": "ac0258461111dc27d884f09699c260e06402c254c102057171ad868dac38cc99"
+      },
+      "linear_svm/test/predictions.parquet": {
+        "bytes": 3980068,
+        "sha256": "f40ab1ffff85b0e9b6d2cee43dcb375042426607f4a6d1d21c5f1036174cadb9"
+      },
+      "linear_svm/test/prediction_scores.csv": {
+        "bytes": 951505,
+        "sha256": "d8880447754ea157c28559db362bbb0c77f1cc9539af2388c80bbf6b3ce0f5d2"
+      }
+    }
+  },
+  "completed_utc": "2026-10-04T13:38:54.218839+00:00"
+}
