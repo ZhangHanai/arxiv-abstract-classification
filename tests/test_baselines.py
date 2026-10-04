@@ -195,6 +195,11 @@ def test_runner_freezes_both_choices_before_test_and_writes_aligned_artifacts(bu
     assert manifest["selection_sha256_before_test"] == file_sha256(output / "validation_selection.json")
     assert manifest["label_to_id"] == {"cs.LG": 0, "cs.AI": 1, "cs.CL": 2}
     for name in baselines.MODEL_NAMES:
+        for relative, identity in manifest["artifacts"][name].items():
+            artifact = output / relative
+            assert identity == {"bytes": artifact.stat().st_size, "sha256": file_sha256(artifact)}
+            if artifact.suffix in {".json", ".csv"}:
+                assert b"\r\n" not in artifact.read_bytes()
         for split, source in (("validation", frames["val"]), ("test", frames["test"])):
             directory = output / name / split
             predictions = pd.read_parquet(directory / "predictions.parquet")
@@ -210,6 +215,17 @@ def test_runner_freezes_both_choices_before_test_and_writes_aligned_artifacts(bu
     assert (output / "report.md").is_file()
     assert result["linear_svm"]["score_kind"] == "decision_scores"
     assert not (output / "linear_svm" / "test" / "high_confidence_errors.csv").exists()
+
+
+def test_text_provenance_survives_git_line_ending_normalization(tmp_path):
+    path = tmp_path / "source.py"
+    path.write_bytes(b"first\r\nsecond\r\n")
+    expected = baselines.text_sha256(path)
+    path.write_bytes(b"first\nsecond\n")
+    assert baselines.text_sha256(path) == expected == file_sha256(path)
+    output = tmp_path / "manifest.json"
+    baselines.write_json(output, {"source_sha256": expected})
+    assert b"\r\n" not in output.read_bytes()
 
 
 def test_changed_test_labels_do_not_change_validation_selection(bundle, tmp_path):

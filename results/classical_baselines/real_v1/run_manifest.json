@@ -180,19 +180,36 @@
     "git_head_at_run": "77b2c7376e5740c1064b790c0dfecc6dbe10d4f5",
     "working_tree_dirty_at_run": false,
     "code_sha256": {
-      "config/real_data.yaml": "2c277bee921163758fee53ac58287a4a792b99b20b14b07a3dd27cd0927f2c28",
+      "config/real_data.yaml": "547605cec5bd6a8deb8f146c615143ef115c796ec2cc9f2bbab6767bcbe81cf9",
       "config/classical_baselines.yaml": "39196a2990d7db5b56ddd514d60bd7cd8b0cd0dc52933e985d816949da3df197",
-      "requirements.txt": "45a798589105e12713f7b60f08e3d50c19d8b752365bec9e3ce6703a7b2386e3",
-      "src/config.py": "d28e2fea31733f0ad1b1c65d9bd9af566085c49cbbf534498f8306baa838e8bd",
-      "src/data/dataset.py": "a4bd3b11fa98f437a0e571eebd1994cba38d2671015e0d3bd28cef3829eb9aba",
-      "src/data/integrity.py": "49937e1399d1ffa0cc51cbc62caada49ceda7b14e63477df7f1c897df15b7732",
-      "src/data/profile.py": "78d8ab106f0415901c0d4f4f34c3753f2ffe56887c8148e72bd44dbc940b4a8b",
-      "src/evaluation.py": "760540336d76d1204fbecb290f3ecec3e1b69d2a91a12e4ea6b2026e090384c0",
+      "requirements.txt": "0017e4114a02ff8026527879ae377cb4c5e69d9b94e09dcdaf0b1b5847de1eb5",
+      "src/config.py": "e2889be7f57c09f531e1cd9c0ff33aab903b2cf4d7a74d223f00996befbfa42e",
+      "src/data/dataset.py": "9c343a7748912f127dcad2510fb0859ccf6d55ff99cf279c59185036c6567a13",
+      "src/data/integrity.py": "8dc9fa154ac703d5e99f404cc77fb93666596627b3f663fd1ab075530828fde1",
+      "src/data/profile.py": "ff2f2776d7a6a7598c631ae1956de4bb6e4bbc6039b6851677d96ff3c9683ab6",
+      "src/evaluation.py": "33b902edc27d962a7917a8c8ab903135eb13b2523124a3c7350d425640f439b8",
       "src/models/baselines.py": "5709f1fb567f975d4d433381ca1da933ef278875fe27622576e2f54c5d4266b6",
       "src/models/baseline_report.py": "88b9ef64bf867f0a0c7c5461452aae79c070c4129646e782e16703bb0e5ca5c5"
     },
-    "verified_manifest_sha256": "96cfc0831335c1b8857d161232b823d64f9652332a67a24f00f0832427cd9e15",
-    "verified_profile_sha256": "6284576a1e916aeedbd0aaa1bb563368450d59eb25a2303436bdfd7665ccf44a"
+    "verified_manifest_sha256": "82fe0538975137b1098d326fda5ccfe14eab9b249c8abbacc8edf16e03b9e595",
+    "verified_profile_sha256": "663173c06c0ed869820c146d155b847d0a531ba963efbcb486cdff228889c05d",
+    "observed_working_tree_hashes_at_run": {
+      "code_sha256": {
+        "config/real_data.yaml": "2c277bee921163758fee53ac58287a4a792b99b20b14b07a3dd27cd0927f2c28",
+        "config/classical_baselines.yaml": "39196a2990d7db5b56ddd514d60bd7cd8b0cd0dc52933e985d816949da3df197",
+        "requirements.txt": "45a798589105e12713f7b60f08e3d50c19d8b752365bec9e3ce6703a7b2386e3",
+        "src/config.py": "d28e2fea31733f0ad1b1c65d9bd9af566085c49cbbf534498f8306baa838e8bd",
+        "src/data/dataset.py": "a4bd3b11fa98f437a0e571eebd1994cba38d2671015e0d3bd28cef3829eb9aba",
+        "src/data/integrity.py": "49937e1399d1ffa0cc51cbc62caada49ceda7b14e63477df7f1c897df15b7732",
+        "src/data/profile.py": "78d8ab106f0415901c0d4f4f34c3753f2ffe56887c8148e72bd44dbc940b4a8b",
+        "src/evaluation.py": "760540336d76d1204fbecb290f3ecec3e1b69d2a91a12e4ea6b2026e090384c0",
+        "src/models/baselines.py": "5709f1fb567f975d4d433381ca1da933ef278875fe27622576e2f54c5d4266b6",
+        "src/models/baseline_report.py": "88b9ef64bf867f0a0c7c5461452aae79c070c4129646e782e16703bb0e5ca5c5"
+      },
+      "verified_manifest_sha256": "96cfc0831335c1b8857d161232b823d64f9652332a67a24f00f0832427cd9e15",
+      "verified_profile_sha256": "6284576a1e916aeedbd0aaa1bb563368450d59eb25a2303436bdfd7665ccf44a"
+    },
+    "text_hash_representation": "UTF-8 bytes with CRLF normalized to LF, matching Git blobs"
   },
   "timing_definition": "Wall-clock seconds; training includes TF-IDF fit/transform and classifier fit; prediction includes transform and predict; diagnostics timed separately; I/O excluded.",
   "runtime": {
@@ -242,28 +259,28 @@
       }
     ]
   },
-  "selection_sha256_before_test": "f7037d1d71c5bc99130d82037b1684fb166ad86b9a8d7b84750855170814ce47",
+  "selection_sha256_before_test": "52b3a482120543139d0f3ee4ff8a06dad2e991160bfcacf675f80d9078951ce2",
   "artifacts": {
     "logistic_regression": {
       "logistic_regression/validation/metrics.json": {
-        "bytes": 2340,
-        "sha256": "815d7fc4948d48bfee5246105894c82dcf6462bbb36541488957a018cadef68b"
+        "bytes": 2192,
+        "sha256": "588ac6bcf982c1ab214b0974890ccbb848f98c937064c0fb66f80713af6c562f"
       },
       "logistic_regression/validation/confusion_matrix.csv": {
-        "bytes": 293,
-        "sha256": "7091c0209b66197b0debc54109feba7ca53655ca6d2ef7d379bc2fcad3eb8d51"
+        "bytes": 284,
+        "sha256": "461e99d8413f2467f2232ba3c1acff74e4a06cc7c2d5d2bce11924d366dda152"
       },
       "logistic_regression/validation/predictions.parquet": {
         "bytes": 3959293,
         "sha256": "fee8a557762f0ac5915f07156d5a5bb9d74c0e379dab6386e26998978e643f0c"
       },
       "logistic_regression/test/metrics.json": {
-        "bytes": 2325,
-        "sha256": "6b451399157e5fd447b2e2ad656b805b875c6ae97709621fee91d02768825e1d"
+        "bytes": 2177,
+        "sha256": "86495011b4525c19ac080701ee72e6aea72a55a61c7120b7aa3ad84c9dcd865a"
       },
       "logistic_regression/test/confusion_matrix.csv": {
-        "bytes": 294,
-        "sha256": "43f57840e359896308884201d62ac6681357fdd117bbf6f4ed7260fa76d98435"
+        "bytes": 285,
+        "sha256": "c5e3388eb0758c7e05a53167f525d20046c246072d16b0288cf158b032a838ee"
       },
       "logistic_regression/test/predictions.parquet": {
         "bytes": 3980068,
@@ -274,30 +291,30 @@
         "sha256": "9014c8bd015dec3142a9110ca5bd3c83e916140194faac4d693f59b7697e3546"
       },
       "logistic_regression/test/high_confidence_errors.csv": {
-        "bytes": 1156,
-        "sha256": "42d89d6d6aeacd0c31d9ad0d07bf82cde41d2f2553b8b8289bc5198e3adce683"
+        "bytes": 1138,
+        "sha256": "635f6fc2751bc19ab7937c31cb0c199ba068ca9d4c2447fd298b3dd3c9f56eef"
       }
     },
     "linear_svm": {
       "linear_svm/validation/metrics.json": {
-        "bytes": 2339,
-        "sha256": "6a7ff37707c0fb24860fb34cba216864eeaddbac1085470b3b4614d66998e0ed"
+        "bytes": 2191,
+        "sha256": "2db3f4e95bf09f2b6ac17cc42750d61fb6906bf2e0fa05337e9de1cf9f960632"
       },
       "linear_svm/validation/confusion_matrix.csv": {
-        "bytes": 290,
-        "sha256": "f8d4e6da61210bcbb04d32158db0e1c63428d86c898f71461de3f8a3b63c58e9"
+        "bytes": 281,
+        "sha256": "d87d993483909c126dcf4a62b78da117c37b368d166cfde7150f921794bd3d8a"
       },
       "linear_svm/validation/predictions.parquet": {
         "bytes": 3959293,
         "sha256": "af933e99b77c2d775803181b26558830efe7932079e5d2cf04a5d4d30acd8c73"
       },
       "linear_svm/test/metrics.json": {
-        "bytes": 2343,
-        "sha256": "a91edeb70cd9d097b53cbb93cb4f6a80bf75cde2eeaa5b541c3d2b15ccf22224"
+        "bytes": 2195,
+        "sha256": "3f5bbaac9bf0a58aae274433a5fac92dded16812d995c978e9deb7e6ee3e48a3"
       },
       "linear_svm/test/confusion_matrix.csv": {
-        "bytes": 293,
-        "sha256": "ac0258461111dc27d884f09699c260e06402c254c102057171ad868dac38cc99"
+        "bytes": 284,
+        "sha256": "e59ef2cfd55ef22afb5d609afac3730d8cc18bcbedabb3822ff6fe5d6d312139"
       },
       "linear_svm/test/predictions.parquet": {
         "bytes": 3980068,
@@ -309,5 +326,11 @@
       }
     }
   },
-  "completed_utc": "2026-10-04T13:38:54.218839+00:00"
+  "completed_utc": "2026-10-04T13:38:54.218839+00:00",
+  "provenance_repair": {
+    "reason": "Windows CRLF working-tree text was normalized to LF by Git after the recorded run.",
+    "changes": "Recorded artifact identities now match LF committed text; code identities use original clean training-commit Git blobs. Historical observed work-tree hashes are preserved separately.",
+    "training_or_prediction_repeated": false,
+    "metrics_model_choices_and_binary_prediction_artifacts_unchanged": true
+  }
 }

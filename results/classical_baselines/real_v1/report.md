@@ -155,3 +155,7 @@ Estimator semantics: [TF-IDF](https://scikit-learn.org/stable/modules/generated/
 PR #6 and PR #7 were merged with normal merge commits, and local main was updated before the model branch. PR #7 passed 137 tests after rebasing; the final baseline suite passed 150 tests in 10.51s with zero failures or skips. The 13 focused behavioral tests passed separately. Dependency and artifact checks passed. See [verification.json](verification.json) for exact commands, named tests, artifact checks and the complete 24-file change inventory.
 
 The command above records the original run. For reproduction, replace its output path with a fresh directory such as `results/classical_baselines/reproduction_v1`; the committed `real_v1` directory is deliberately protected from overwrite.
+
+**Portable provenance correction before merge**
+
+The original Windows run hashed CRLF working-tree text. Git stored LF text, so those identities were not portable. The manifest now records LF artifact identities and source hashes from the original clean training commit; original observed working-tree hashes are retained separately. Text writers and Git attributes enforce LF for future runs. No model was retrained, no predictions were regenerated, and no metrics or model choices changed.

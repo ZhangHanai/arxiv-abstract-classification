@@ -44,6 +44,14 @@
       "failures": 0,
       "skipped": 0,
       "seconds": 10.51
+    },
+    {
+      "scope": "Final PR 8 review after portable provenance correction",
+      "command": "python -B -m pytest -q -p no:cacheprovider -ra",
+      "passed": 151,
+      "failures": 0,
+      "skipped": 0,
+      "seconds": 11.68
     }
   ],
   "focused_test_names": [
@@ -79,7 +87,7 @@
       "linear_svm": 1
     },
     "all_four_candidates_converged_without_warnings": true,
-    "current_source_hashes_match_clean_training_commit": "passed",
+    "current_source_hashes_match_clean_training_commit": "Original experiment code hashes validated against Git blobs at the recorded training commit; subsequent newline-only writer repair is separate.",
     "all_recorded_output_hashes": "passed",
     "new_model_predictions_or_test_tuning_during_artifact_review": false
   },
@@ -105,8 +113,9 @@
     "transformer_implemented_or_trained": false,
     "next_increment_needs_tokenizer_training_loop_compute_budget_and_validation_only_choices": true
   },
-  "files_changed_count": 24,
+  "files_changed_count": 25,
   "files_changed": [
+    ".gitattributes",
     ".gitignore",
     "PROJECT_STATUS.md",
     "README.md",
@@ -131,5 +140,12 @@
     "src/models/baseline_report.py",
     "src/models/baselines.py",
     "tests/test_baselines.py"
-  ]
+  ],
+  "portable_provenance_repair": {
+    "historical_run_retained": true,
+    "tracked_artifacts_use_lf": true,
+    "all_artifact_hashes_reverified": true,
+    "original_training_source_hashes_match_git_blobs": true,
+    "no_model_rerun_or_test_directed_change": true
+  }
 }

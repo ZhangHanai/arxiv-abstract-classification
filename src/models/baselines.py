@@ -8,6 +8,7 @@ vocabularies, or sparse matrices are serialized.
 import argparse
 from copy import deepcopy
 from datetime import datetime, timezone
+import hashlib
 from importlib.metadata import version
 import json
 import math
@@ -41,8 +42,20 @@ SELECTION_RULE = "maximum validation macro_f1; exact ties use first listed C"
 def write_json(path, value):
     Path(path).write_text(
         json.dumps(value, indent=2, ensure_ascii=False, allow_nan=False, default=_json_default) + "\n",
-        encoding="utf-8",
+        encoding="utf-8", newline="\n",
     )
+
+
+def text_sha256(path):
+    """Hash the LF representation Git stores, regardless of checkout settings."""
+    return hashlib.sha256(Path(path).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+
+
+def normalize_evaluation_text(paths):
+    """The shared writer may use native newlines; normalize small text outputs."""
+    for name in ("metrics", "confusion_matrix"):
+        path = paths[name]
+        path.write_bytes(path.read_bytes().replace(b"\r\n", b"\n"))
 
 
 def _json_default(value):
@@ -306,23 +319,25 @@ def run_baselines(config, experiment, verified_manifest, output_dir, *, provenan
             for name in MODEL_NAMES:
                 winner = winners[name]
                 val_paths = save_evaluation(frames["val"], winner["predictions"], classes, output / name / "validation")
+                normalize_evaluation_text(val_paths)
                 predictions, scores, kind, prediction_seconds, score_seconds = predict_with_scores(
                     winner["pipeline"], frames["test"]["text"], classes,
                 )
                 manifest["test_prediction_calls"][name] += 1
                 test_dir = output / name / "test"
                 test_paths = save_evaluation(frames["test"], predictions, classes, test_dir)
+                normalize_evaluation_text(test_paths)
                 metrics = json.loads(test_paths["metrics"].read_text(encoding="utf-8"))
                 score_rows = pd.DataFrame(scores, columns=classes)
                 score_rows.insert(0, "id", frames["test"]["id"].tolist())
-                score_rows.to_csv(test_dir / "prediction_scores.csv", index=False)
+                score_rows.to_csv(test_dir / "prediction_scores.csv", index=False, lineterminator="\n")
                 errors[name] = error_summary(metrics)
                 if kind == "probabilities":
                     confidence = high_confidence_errors(frames["test"], predictions, scores, classes)
                     errors[name]["high_confidence_errors"] = confidence
                     pd.DataFrame(confidence["top_errors"], columns=[
                         "id", "true_label", "predicted_label", "predicted_probability", "true_label_probability",
-                    ]).to_csv(test_dir / "high_confidence_errors.csv", index=False)
+                    ]).to_csv(test_dir / "high_confidence_errors.csv", index=False, lineterminator="\n")
                 else:
                     errors[name]["score_note"] = "Uncalibrated LinearSVC decision scores; predict_proba is unavailable."
                 pipeline = winner["pipeline"]
@@ -395,8 +410,9 @@ def main():
         "command": f"python -B -m src.models.baselines --config {args.config} --experiment-config {args.experiment_config} --verified-manifest {args.verified_manifest} --output-dir {args.output_dir}",
         "git_head_at_run": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=PROJECT_ROOT, text=True).strip(),
         "working_tree_dirty_at_run": bool(subprocess.check_output(["git", "status", "--porcelain"], cwd=PROJECT_ROOT, text=True).strip()),
-        "code_sha256": {path.relative_to(PROJECT_ROOT).as_posix(): file_sha256(path) for path in code_paths},
-        "verified_manifest_sha256": file_sha256(verified_path), "verified_profile_sha256": file_sha256(profile_path),
+        "text_hash_representation": "UTF-8 bytes with CRLF normalized to LF, matching Git blobs",
+        "code_sha256": {path.relative_to(PROJECT_ROOT).as_posix(): text_sha256(path) for path in code_paths},
+        "verified_manifest_sha256": text_sha256(verified_path), "verified_profile_sha256": text_sha256(profile_path),
     }
     run_baselines(config, experiment, verified, resolve_runtime_path(args.output_dir, "output_dir"), provenance=provenance)
 

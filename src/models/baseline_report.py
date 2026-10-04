@@ -151,4 +151,4 @@ def write_report(path, manifest, candidates, comparison, errors):
         "[LogisticRegression](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html), "
         "[LinearSVC](https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html).", "",
     ])
-    Path(path).write_text("\n".join(lines), encoding="utf-8")
+    Path(path).write_text("\n".join(lines), encoding="utf-8", newline="\n")
