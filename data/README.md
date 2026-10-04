@@ -160,8 +160,9 @@ dataset-page process above.
 After acquiring the snapshot, from the repository root:
 
 ```sh
-python -B -m src.data.preprocess
-python -B -m src.data.profile --source-manifest results/real_data_validation/source_manifest.json --output-dir results/real_data_validation
+python -B -m src.data.curate --source-manifest results/real_data_validation/source_manifest.json --output-dir results/real_data_validation
+python -B -m src.data.preprocess --config config/real_data.yaml
+python -B -m src.data.profile --config config/real_data.yaml --source-manifest results/real_data_validation/curation_report.json --output-dir results/real_data_validation
 python -B -m pytest -q -p no:cacheprovider -ra
 ```
 
@@ -184,3 +185,40 @@ A rejected selected pool is reported as a failed preprocessing gate, with
 observed selection/duplicate counts and no fabricated split statistics. The
 profile command exits nonzero and marks the data unready; it does not delete,
 deduplicate, relabel, or quietly change the seed/cap to evade the integrity gate.
+
+### Opt-in source-curation decision
+
+The unmodified version-306 snapshot failed the selected-pool rejection guard.
+Two selected normalized-text groups repeated; the first detected pair,
+`1206.6899` and `1201.6078`, contains the same withdrawal notice under different
+IDs/labels. The original rejected run is preserved in
+`results/real_data_validation/unmodified_snapshot_rejection/`.
+
+For the real-data validation, the user authorized this separate curation rule:
+**exclude every member of any duplicate stripped-ID or normalized-text group
+among all eligible records for the eight configured first-token classes before
+reservoir sampling.** No representative is chosen from a conflicting group.
+ID/text conditions are combined as a union, so a record is excluded once even
+when both match. Normalized grouping uses full string equality under the existing
+`text_identity()` rule, not hash equality or fuzzy similarity.
+
+`src.data.curate` makes two complete source passes. The first counts eligible
+identities, and the second writes eligible records outside every repeated group
+to an ignored derived JSONL file, retaining all fields and category labels. The
+original snapshot is read-only and hashed on both passes; a source change fails
+before the derived file is replaced. The small `curation_report.json` records
+original/derived hashes, raw filtering, every class's eligible/excluded/retained
+counts, union exclusion reasons and representative duplicate groups. A complete
+per-record exclusion audit remains in ignored `data/processed/`; its count and
+hash are recorded in the report. Timings/code identity are recorded separately
+in `curation_runtime_manifest.json` so the curation report is deterministic.
+
+This is opt-in: the default `config/config.yaml` and the original preprocessing
+duplicate-rejection contract remain unchanged. The explicit
+`config/real_data.yaml` points at the derived JSONL with the same ordered classes,
+seed 42, cap 7,000 and 80/10/10 fractions. Both the writer and public loader still
+reject any duplicate surviving the curated source.
+
+This rule removes duplicate-group records, not all withdrawals, short abstracts,
+multi-category papers or semantic paraphrases. Such cases are flagged for
+inspection; no heuristic relabeling or unapproved extra filtering is performed.

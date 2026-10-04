@@ -145,7 +145,7 @@ def profile_snapshot(config, source_manifest, output_dir, *, repeat=True):
     git_head_at_run = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=PROJECT_ROOT, text=True).strip()
     code_fingerprints = {
         path.relative_to(PROJECT_ROOT).as_posix(): file_sha256(path)
-        for path in [PROJECT_ROOT / "config/config.yaml", PROJECT_ROOT / "src/config.py", *sorted((PROJECT_ROOT / "src/data").glob("*.py"))]
+        for path in [*sorted((PROJECT_ROOT / "config").glob("*.yaml")), PROJECT_ROOT / "src/config.py", *sorted((PROJECT_ROOT / "src/data").glob("*.py"))]
     }
     timings = {}
     preprocessing = {"status": "failed"}
