@@ -74,6 +74,9 @@ def test_profile_records_duplicate_rejection_without_claiming_produced_splits(tm
     assert report["ready_for_baseline_data_input"] is False
     assert "integrity" not in report
     assert report["reproducibility"]["status"] == "not_run"
+    assert report["source_audit"]["selected_source_occurrences"] == 20
+    assert report["source_audit"]["selected_first_token_label_mismatches"] == 0
+    assert {row["label"] for row in report["representative_examples"]} == {"cs.AI", "cs.LG"}
     assert not list(tmp_path.rglob("*.parquet"))
 
 

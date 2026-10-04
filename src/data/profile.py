@@ -142,6 +142,11 @@ def profile_snapshot(config, source_manifest, output_dir, *, repeat=True):
     summary_paths = [resolve_relative_path(name, output_dir, "summary output") for name in ("profile.json", "run_manifest.json")]
     if raw_path in summary_paths or len(set(summary_paths)) != len(summary_paths):
         raise ValueError("Summary outputs must be distinct and must not overwrite the raw source")
+    git_head_at_run = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=PROJECT_ROOT, text=True).strip()
+    code_fingerprints = {
+        path.relative_to(PROJECT_ROOT).as_posix(): file_sha256(path)
+        for path in [PROJECT_ROOT / "config/config.yaml", PROJECT_ROOT / "src/config.py", *sorted((PROJECT_ROOT / "src/data").glob("*.py"))]
+    }
     timings = {}
     preprocessing = {"status": "failed"}
     frames = None
@@ -167,10 +172,22 @@ def profile_snapshot(config, source_manifest, output_dir, *, repeat=True):
         row["id"]: row
         for frame in (frames or {}).values() for row in frame.to_dict("records")
     }
+    if frames is None:
+        # A rejected writer exposes no selected pool. Reconstruct exactly the
+        # same reservoir to audit source labels/examples without changing it.
+        started = perf_counter()
+        rejected_samples = collect_samples(
+            iter_records(raw_path, decode_errors=config["data"].get("decode_errors", "strict")),
+            config["classes"], config["data"]["samples_per_class"], config["seed"],
+        )
+        timings["rejected_pool_reconstruction_seconds"] = perf_counter() - started
+        selected = {row["id"]: row for bucket in rejected_samples.values() for row in bucket}
     representatives = {}
-    if frames is not None:
+    if selected:
         for label in config["classes"]:
             rows = [row for row in selected.values() if row["label"] == label]
+            if not rows:
+                continue
             rows.sort(key=lambda row: (len(row["text"].split()), row["id"]))
             for kind, row in (("shortest", rows[0]), ("median_length", rows[len(rows) // 2]), ("longest", rows[-1])):
                 representatives.setdefault(row["id"], []).append(kind)
@@ -229,6 +246,7 @@ def profile_snapshot(config, source_manifest, output_dir, *, repeat=True):
             label: length_statistics([row["text"] for row in bucket]) for label, bucket in samples.items()
         }},
         "source_audit": dict(source_audit),
+        "source_audit_scope": "selected samples; split assignments exist only if preprocessing passed",
         "source_audit_thresholds": {"very_short_max_whitespace_tokens": 30, "very_long_min_whitespace_tokens_exclusive": 1000, "withdrawal_marker": "case-insensitive substring 'withdrawn' in title/abstract/comments; heuristic, not confirmed withdrawal"},
         "representative_examples": sorted(examples, key=lambda row: (config["classes"].index(row["label"]), row["whitespace_tokens"], row["id"])),
         "label_rule": "first whitespace-separated category token; authoritative primary-category semantics not established by the Kaggle data card",
@@ -281,11 +299,8 @@ def profile_snapshot(config, source_manifest, output_dir, *, repeat=True):
         "runtime": {"python": platform.python_version(), "platform": platform.platform(), "packages": {
             package: version(package) for package in ("pandas", "pyarrow", "pyyaml", "scikit-learn", "pytest")
         }},
-        "git_head_at_run": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=PROJECT_ROOT, text=True).strip(),
-        "code_sha256": {
-            path.relative_to(PROJECT_ROOT).as_posix(): file_sha256(path)
-            for path in [PROJECT_ROOT / "config/config.yaml", PROJECT_ROOT / "src/config.py", *sorted((PROJECT_ROOT / "src/data").glob("*.py"))]
-        },
+        "git_head_at_run": git_head_at_run,
+        "code_sha256": code_fingerprints,
         "artifacts": artifacts,
         "timing_note": "Measured with time.perf_counter(); source audit, repeat and loading are separate; not an extrapolated benchmark.",
     }
