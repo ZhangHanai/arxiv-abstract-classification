@@ -8,6 +8,7 @@ from src.data.dataset import (
     get_texts_label_ids,
     get_texts_labels,
     load_split,
+    load_splits,
     validate_labels,
 )
 
@@ -105,3 +106,97 @@ def test_validate_labels_rejects_unknown_label(classes):
 
     with pytest.raises(ValueError, match="math.CO"):
         validate_labels(dataframe, classes)
+
+
+def _write_bundle(config):
+    frames = {}
+    for name in ("train", "val", "test"):
+        frame = pd.DataFrame({
+            "id": [f"{name}-{i}" for i in range(len(config["classes"]))],
+            "text": [f"{name} abstract {i}" for i in range(len(config["classes"]))],
+            "label": config["classes"],
+        })
+        write_split(config, name, frame)
+        frames[name] = frame
+    return frames
+
+
+def test_load_splits_requires_complete_bundle_and_preserves_order(injected_config):
+    write_split(injected_config, "train")
+    with pytest.raises(FileNotFoundError, match="Missing processed split 'val'"):
+        load_splits(injected_config)
+
+    expected = _write_bundle(injected_config)
+    actual = load_splits(injected_config)
+
+    assert list(actual) == ["train", "val", "test"]
+    for name in actual:
+        pd.testing.assert_frame_equal(actual[name], expected[name])
+
+
+@pytest.mark.parametrize("column", ["id", "text"])
+def test_loaders_reject_cross_split_leakage_from_parquet(injected_config, column):
+    frames = _write_bundle(injected_config)
+    value = frames["val"].loc[0, column]
+    if column == "text":
+        value = "  " + value.upper().replace(" ", "\n\t") + " "
+    else:
+        value = " " + value + " "
+    frames["test"].loc[0, column] = value
+    write_split(injected_config, "test", frames["test"])
+    message = "Duplicate ID" if column == "id" else "Duplicate normalized text"
+
+    with pytest.raises(ValueError, match=message):
+        load_splits(injected_config)
+    # Even requesting train catches leakage between the existing val/test files.
+    with pytest.raises(ValueError, match=message):
+        load_split("train", injected_config)
+
+
+@pytest.mark.parametrize(
+    ("column", "value", "message"),
+    [("id", None, "id must be a nonempty string"),
+     ("id", 17, "id must be a nonempty string"),
+     ("text", None, "text must be a nonempty string"),
+     ("text", " ", "text must be a nonempty string"),
+     ("label", "math.CO", "Labels outside configured classes")],
+)
+def test_load_split_rejects_invalid_row_values(injected_config, column, value, message):
+    frame = pd.DataFrame({"id": ["paper-1"], "text": ["Abstract"], "label": ["cs.AI"]})
+    frame[column] = value
+    write_split(injected_config, dataframe=frame)
+
+    with pytest.raises(ValueError, match=message):
+        load_split("train", injected_config)
+
+
+@pytest.mark.parametrize("problem", ["empty", "duplicate_id", "duplicate_text"])
+def test_load_split_rejects_empty_or_repeated_rows(injected_config, problem):
+    frame = pd.DataFrame({
+        "id": ["paper-1", "paper-2"], "text": ["First abstract", "Second abstract"],
+        "label": ["cs.AI", "cs.LG"],
+    })
+    if problem == "empty":
+        frame = frame.iloc[:0]
+        message = "at least one example"
+    else:
+        column = "id" if problem == "duplicate_id" else "text"
+        frame.loc[1, column] = frame.loc[0, column]
+        message = "Duplicate ID" if column == "id" else "Duplicate normalized text"
+    write_split(injected_config, dataframe=frame)
+
+    with pytest.raises(ValueError, match=message):
+        load_split("train", injected_config)
+
+
+def test_load_splits_rejects_missing_class_coverage(injected_config):
+    frames = _write_bundle(injected_config)
+    write_split(injected_config, "val", frames["val"].iloc[:1])
+
+    with pytest.raises(ValueError, match="val.*no examples for configured classes"):
+        load_splits(injected_config)
+
+
+def test_build_label_maps_rejects_duplicate_class_definitions():
+    with pytest.raises(ValueError, match="unique labels"):
+        build_label_maps(["cs.AI", "cs.AI"])
