@@ -1,6 +1,7 @@
 # Dataset Setup
 
-This project is designed to use the **Cornell University arXiv metadata** dataset published on Kaggle.
+This project uses the **Cornell University arXiv metadata** dataset published
+as [`Cornell-University/arxiv` on Kaggle](https://www.kaggle.com/datasets/Cornell-University/arxiv).
 
 ## Obtain the dataset
 
@@ -71,6 +72,10 @@ an output is rejected before writing, preserving the raw source.
 The operational label is the **first whitespace-separated token in
 `categories`**. This implementation rule is not independent verification of the
 meaning of category ordering in a real source snapshot.
+The [Kaggle data card](https://www.kaggle.com/datasets/Cornell-University/arxiv)
+describes this field as category tags; it does not promise that the first token
+is the authoritative primary category. Multi-category records retain that first
+token rule; this project does not manually relabel them.
 
 ## Sampling, duplicates, and splits
 
@@ -135,3 +140,47 @@ The integrity pass is verified with synthetic fixtures. A real snapshot still
 needs to be supplied, successfully preprocessed, and loaded with `load_splits()`
 before any measured baseline run. Source provenance/category interpretation and
 the training workflow remain outstanding.
+
+## Reproduce the real-data profile
+
+The first validation uses Kaggle version **306**, released
+`2026-10-03T23:53:00.087Z`. Its identity and exact observed archive/raw hashes are
+in `results/real_data_validation/source_manifest.json`. The raw file is
+5,589,459,042 bytes. Obtain that exact official archive from Kaggle, extract its
+single `arxiv-metadata-oai-snapshot.json` member into `data/raw/`, and compare
+SHA-256 before reproducing this particular run. A newer version is a different
+run and requires a new source manifest.
+
+The archive was downloaded manually from the official version-pinned download
+endpoint recorded in the manifest. The public endpoint did not present login or
+additional dataset terms. No third-party mirror or automatic repository
+downloader was used. If Kaggle asks for account access or terms, follow its
+dataset-page process above.
+
+After acquiring the snapshot, from the repository root:
+
+```sh
+python -B -m src.data.preprocess
+python -B -m src.data.profile --source-manifest results/real_data_validation/source_manifest.json --output-dir results/real_data_validation
+python -B -m pytest -q -p no:cacheprovider -ra
+```
+
+The profile command runs the existing public preprocessing/complete-bundle
+loading APIs, counts a second streamed source pass, and repeats preprocessing
+in a temporary ignored directory. It compares ordered dataset rows and the
+deterministic preprocessing report, and separately records whether parquet bytes
+match in the current environment. The temporary repeat directory is removed.
+No model is fitted. It records selected cleaned-text character and whitespace
+token lengths; these are not Transformer tokenizer lengths.
+
+Only the small profile, source manifest, runtime manifest and written report are
+saved in Git. Raw archives, extracted metadata, processed parquet, runtime
+preprocessing reports and local acquisition observations remain ignored. The
+runtime manifest records measured durations, exact package versions, code
+fingerprints, output hashes and the Git head at execution. Timings are observed
+on one machine, not extrapolated benchmarks.
+
+A rejected selected pool is reported as a failed preprocessing gate, with
+observed selection/duplicate counts and no fabricated split statistics. The
+profile command exits nonzero and marks the data unready; it does not delete,
+deduplicate, relabel, or quietly change the seed/cap to evade the integrity gate.
