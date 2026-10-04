@@ -95,3 +95,12 @@ def test_profile_missing_snapshot_does_not_manufacture_a_report(tmp_path):
     with pytest.raises(FileNotFoundError, match="Supply the documented raw snapshot"):
         profile_snapshot(config, {}, output)
     assert not output.exists()
+
+
+def test_profile_detects_a_valid_dataset_from_the_wrong_source_identity(tmp_path):
+    config = fixture_config(tmp_path)
+    report = profile_snapshot(config, {"raw_sha256_observed": "0" * 64}, tmp_path / "summaries", repeat=False)
+    assert report["preprocessing"]["status"] == "passed"
+    assert report["source_manifest_identity_check"] == "failed"
+    assert report["selected_pool_matches_written_rows"] is True
+    assert report["ready_for_baseline_data_input"] is False

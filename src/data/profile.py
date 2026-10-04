@@ -252,8 +252,17 @@ def profile_snapshot(config, source_manifest, output_dir, *, repeat=True):
         "label_rule": "first whitespace-separated category token; authoritative primary-category semantics not established by the Kaggle data card",
         "reproducibility": {"repeat_requested": repeat, "status": "not_run"},
     }
+    expected_source = source_manifest.get("derived_source", {})
+    expected_hash = expected_source.get("sha256", source_manifest.get("raw_sha256_observed"))
+    expected_filename = expected_source.get("filename", source_manifest.get("expected_raw_filename"))
+    report["source_manifest_identity_check"] = (
+        "not_available" if expected_hash is None else
+        "passed" if expected_hash == report["source"]["sha256"] and (expected_filename is None or expected_filename == raw_path.name) else
+        "failed"
+    )
     artifacts = {}
     if frames is not None:
+        report["selected_pool_matches_written_rows"] = {row["id"]: row for row in rows} == selected
         report["integrity"] = audit_frames(frames, config)
         report["abstract_lengths"]["per_split"] = {name: length_statistics(frame["text"].tolist()) for name, frame in frames.items()}
         first_report = json.loads((Path(config["paths"]["processed_data"]) / "preprocessing_report.json").read_text(encoding="utf-8"))
@@ -282,6 +291,8 @@ def profile_snapshot(config, source_manifest, output_dir, *, repeat=True):
                 assert report["reproducibility"]["preprocessing_report_identical"]
                 assert all(report["reproducibility"]["ordered_rows_identical"].values())
         report["ready_for_baseline_data_input"] = (
+            report["source_manifest_identity_check"] != "failed" and
+            report["selected_pool_matches_written_rows"] and
             report["integrity"]["independent_row_and_overlap_checks_passed"] and
             report["integrity"]["split_rounding_matches"] and
             report["integrity"]["every_class_in_every_split"] and
