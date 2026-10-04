@@ -1,10 +1,14 @@
 # Data integrity increment
 
-Verified on 2026-10-04 (Asia/Shanghai), on `codex/data-integrity`, based on
-`6d58b38a0eb5bfbe7b0c110d26937a88f32c742f`. The archaeology/evaluation increment
-is preserved in [PR #5](https://github.com/ZhangHanai/arxiv-abstract-classification/pull/5)
-into `main`. That PR remains open; no remote CI checks were present. Its three
-files are unchanged by this increment.
+Verified on 2026-10-04 (Asia/Shanghai), on `codex/data-integrity`. The
+archaeology/evaluation increment is preserved in
+[PR #5](https://github.com/ZhangHanai/arxiv-abstract-classification/pull/5),
+merged into `main` with merge commit
+`cfccf369c54f4d04ed507bbe2d2dadb8b55d2223`. Local `main` was fetched and
+fast-forwarded, and the single integrity implementation commit was rebased
+onto that updated base without conflicts. PR #5's three files are unchanged by
+this increment; its changes and unrelated historical commits are not replayed
+in the integrity PR. No remote CI checks were present.
 
 ## Bugs found and fixed
 
@@ -103,6 +107,14 @@ Final complete run: `python -B -m pytest -q -p no:cacheprovider -ra` produced
 with the existing audit environment's Python 3.13.5 on Windows, from the
 repository root, with bytecode generation disabled. No dependency changes were
 made; the preservation environment's `pip check` had no broken requirements.
+
+Before merging PR #5, its exact head was independently checked in a detached
+worktree: **63 passed in 5.15s**, and `python -m pip check` reported
+**No broken requirements found.** After the merge and rebase, the complete
+integrity suite was rerun: **128 passed in 9.48s**, with **0 failures and
+0 skipped cases**, and `pip check` again reported no broken requirements.
+`git diff main...HEAD --check` passed. Git's fetch needed the machine's existing
+system proxy after direct connections failed; no global Git settings changed.
 
 | File | Existing cases retained | New cases | Passing cases |
 |---|---:|---:|---:|
