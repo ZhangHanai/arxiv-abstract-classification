@@ -1,0 +1,25 @@
+# Fixed before any held-out test predictions. Only C is compared on validation.
+experiment_name: classical_baselines_v1
+threads: 1
+tfidf:
+  ngram_range: [1, 2]
+  min_df: 3
+  max_df: 1.0
+  max_features: 100000
+  sublinear_tf: true
+  lowercase: true
+  strip_accents: null
+  stop_words: null
+  token_pattern: '(?u)\b\w\w+\b'
+  norm: l2
+  use_idf: true
+  smooth_idf: true
+models:
+  logistic_regression:
+    C: [1.0, 4.0]
+    max_iter: 1000
+    tol: 0.0001
+  linear_svm:
+    C: [1.0, 4.0]
+    max_iter: 5000
+    tol: 0.0001

@@ -11,6 +11,12 @@ checkpoints/
 *.pt
 *.pth
 *.safetensors
+*.joblib
+*.pkl
+
+# Aligned evaluation rows contain source abstracts; keep them local.
+results/**/predictions.parquet
+results/**/prediction_scores.csv
 
 # Python bytecode and caches
 __pycache__/
