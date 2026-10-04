@@ -1,0 +1,2 @@
+# Keep committed source and small result artifacts byte-identical on all hosts.
+* text=auto eol=lf

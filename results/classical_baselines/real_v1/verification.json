@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "verified_utc": "2026-10-04T13:47:37.203270+00:00",
+  "date_local": "2026-10-04",
+  "timezone": "Asia/Shanghai",
+  "python_executable": "D:/AI-Projects/.audit-envs/arxiv-abstract-classification-20261004/Scripts/python.exe",
+  "pr_stack": {
+    "integrity_pr": 6,
+    "integrity_merge_method": "merge",
+    "integrity_merge_commit": "042f7ff5238a486c8670f5a7fc0153e313aafaf8",
+    "real_data_pr": 7,
+    "real_data_merge_method": "merge",
+    "real_data_merge_commit": "a2c77ea9d23c6aee780f96000fdeb1ab1ee0d4fb",
+    "real_data_rebased_without_conflicts": true,
+    "real_data_final_tree_unchanged_by_rebase": true,
+    "real_data_retargeted_to_main_and_marked_ready_before_merge": true,
+    "real_data_increment_files": 18,
+    "real_data_increment_commits": 5,
+    "real_data_largest_new_blob_bytes": 27494,
+    "real_data_no_raw_or_processed_dataset_archive_checkpoint_secret_or_large_model_artifact": true,
+    "local_main_updated_before_model_branch": true
+  },
+  "tests": [
+    {
+      "scope": "PR 7 after rebase onto merged PR 6",
+      "command": "python -B -m pytest -q -p no:cacheprovider -ra",
+      "passed": 137,
+      "failures": 0,
+      "skipped": 0,
+      "seconds": 9.78
+    },
+    {
+      "scope": "focused classical baseline behavior",
+      "command": "python -B -m pytest -q -p no:cacheprovider tests/test_baselines.py -ra",
+      "passed": 13,
+      "failures": 0,
+      "skipped": 0,
+      "seconds": 4.62
+    },
+    {
+      "scope": "full final repository suite",
+      "command": "python -B -m pytest -q -p no:cacheprovider -ra",
+      "passed": 150,
+      "failures": 0,
+      "skipped": 0,
+      "seconds": 10.51
+    },
+    {
+      "scope": "Final PR 8 review after portable provenance correction",
+      "command": "python -B -m pytest -q -p no:cacheprovider -ra",
+      "passed": 151,
+      "failures": 0,
+      "skipped": 0,
+      "seconds": 11.68
+    }
+  ],
+  "focused_test_names": [
+    "test_pipeline_construction_supports_configurable_word_features",
+    "test_selection_fits_only_training_rows_and_preserves_training_idf",
+    "test_fixed_seed_and_tie_rule_are_deterministic",
+    "test_probabilities_and_svm_scores_use_configured_label_order",
+    "test_binary_svm_margin_order_is_explicit",
+    "test_runner_freezes_both_choices_before_test_and_writes_aligned_artifacts",
+    "test_changed_test_labels_do_not_change_validation_selection",
+    "test_public_integrity_gate_rejects_leakage_before_fitting",
+    "test_valid_but_changed_split_is_rejected_by_exact_identity",
+    "test_existing_output_is_preserved_without_loading_or_training",
+    "test_convergence_failure_stops_before_any_test_evaluation",
+    "test_small_search_configuration_rejects_invalid_or_excessive_candidates",
+    "test_error_ranking_and_high_confidence_filter_use_actual_errors"
+  ],
+  "dependency_check": {
+    "command": "python -m pip check",
+    "result": "No broken requirements found."
+  },
+  "artifact_checks": {
+    "public_complete_bundle_loading": "passed",
+    "verified_split_identity": "passed",
+    "aligned_ids_text_true_labels_and_correct_flags": "passed for both models and both splits",
+    "confusion_matrix_axes_support_and_metric_artifact_agreement": "passed",
+    "finite_score_values_and_configured_class_order": "passed",
+    "normalized_logistic_regression_probabilities": "passed",
+    "svm_scores_not_probabilities": "passed",
+    "frozen_selection_unchanged": "passed",
+    "test_prediction_calls": {
+      "logistic_regression": 1,
+      "linear_svm": 1
+    },
+    "all_four_candidates_converged_without_warnings": true,
+    "current_source_hashes_match_clean_training_commit": "Original experiment code hashes validated against Git blobs at the recorded training commit; subsequent newline-only writer repair is separate.",
+    "all_recorded_output_hashes": "passed",
+    "new_model_predictions_or_test_tuning_during_artifact_review": false
+  },
+  "hygiene": {
+    "forbidden_extensions_and_data_paths": "none",
+    "raw_json_dataset_or_large_model_structure_in_json": "none",
+    "secret_pattern_matches": "none",
+    "largest_new_file": "src/models/baselines.py",
+    "largest_new_file_bytes": 22676,
+    "ignored_local_prediction_and_score_files": [
+      "results/classical_baselines/real_v1/linear_svm/test/prediction_scores.csv",
+      "results/classical_baselines/real_v1/linear_svm/test/predictions.parquet",
+      "results/classical_baselines/real_v1/linear_svm/validation/predictions.parquet",
+      "results/classical_baselines/real_v1/logistic_regression/test/prediction_scores.csv",
+      "results/classical_baselines/real_v1/logistic_regression/test/predictions.parquet",
+      "results/classical_baselines/real_v1/logistic_regression/validation/predictions.parquet"
+    ],
+    "trained_model_binaries_sparse_matrices_or_caches_saved": false,
+    "no_remote_ci_or_native_linux_macos_verification_claimed": true
+  },
+  "distilbert_readiness": {
+    "verified_data_fixed_splits_shared_evaluation_and_measured_baseline_references": true,
+    "transformer_implemented_or_trained": false,
+    "next_increment_needs_tokenizer_training_loop_compute_budget_and_validation_only_choices": true
+  },
+  "files_changed_count": 25,
+  "files_changed": [
+    ".gitattributes",
+    ".gitignore",
+    "PROJECT_STATUS.md",
+    "README.md",
+    "config/classical_baselines.yaml",
+    "requirements.txt",
+    "results/classical_baselines/real_v1/comparison.json",
+    "results/classical_baselines/real_v1/error_analysis.json",
+    "results/classical_baselines/real_v1/linear_svm/test/confusion_matrix.csv",
+    "results/classical_baselines/real_v1/linear_svm/test/metrics.json",
+    "results/classical_baselines/real_v1/linear_svm/validation/confusion_matrix.csv",
+    "results/classical_baselines/real_v1/linear_svm/validation/metrics.json",
+    "results/classical_baselines/real_v1/logistic_regression/test/confusion_matrix.csv",
+    "results/classical_baselines/real_v1/logistic_regression/test/high_confidence_errors.csv",
+    "results/classical_baselines/real_v1/logistic_regression/test/metrics.json",
+    "results/classical_baselines/real_v1/logistic_regression/validation/confusion_matrix.csv",
+    "results/classical_baselines/real_v1/logistic_regression/validation/metrics.json",
+    "results/classical_baselines/real_v1/report.md",
+    "results/classical_baselines/real_v1/run_manifest.json",
+    "results/classical_baselines/real_v1/validation_candidates.json",
+    "results/classical_baselines/real_v1/validation_selection.json",
+    "results/classical_baselines/real_v1/verification.json",
+    "src/models/baseline_report.py",
+    "src/models/baselines.py",
+    "tests/test_baselines.py"
+  ],
+  "portable_provenance_repair": {
+    "historical_run_retained": true,
+    "tracked_artifacts_use_lf": true,
+    "all_artifact_hashes_reverified": true,
+    "original_training_source_hashes_match_git_blobs": true,
+    "no_model_rerun_or_test_directed_change": true
+  }
+}

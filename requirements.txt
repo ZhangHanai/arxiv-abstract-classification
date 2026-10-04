@@ -1,6 +1,8 @@
 pyyaml
 pandas
 pyarrow
-scikit-learn
+scikit-learn>=1.8
+numpy
+threadpoolctl
 
 pytest

@@ -1,0 +1,352 @@
+{
+  "logistic_regression": {
+    "total_errors": 971,
+    "top_confusion_pairs": [
+      {
+        "true_label": "cs.AI",
+        "predicted_label": "cs.LG",
+        "count": 82
+      },
+      {
+        "true_label": "cs.AI",
+        "predicted_label": "cs.CL",
+        "count": 75
+      },
+      {
+        "true_label": "cs.CL",
+        "predicted_label": "cs.AI",
+        "count": 74
+      },
+      {
+        "true_label": "cs.LG",
+        "predicted_label": "cs.AI",
+        "count": 52
+      },
+      {
+        "true_label": "cs.CV",
+        "predicted_label": "cs.LG",
+        "count": 41
+      },
+      {
+        "true_label": "cs.LG",
+        "predicted_label": "cs.CL",
+        "count": 40
+      },
+      {
+        "true_label": "cs.LG",
+        "predicted_label": "cs.CV",
+        "count": 36
+      },
+      {
+        "true_label": "cs.SE",
+        "predicted_label": "cs.CR",
+        "count": 36
+      },
+      {
+        "true_label": "cs.CR",
+        "predicted_label": "cs.SE",
+        "count": 35
+      },
+      {
+        "true_label": "cs.AI",
+        "predicted_label": "cs.CV",
+        "count": 28
+      }
+    ],
+    "lowest_f1_classes": [
+      {
+        "label": "cs.AI",
+        "precision": 0.6755905511811023,
+        "recall": 0.6128571428571429,
+        "f1": 0.6426966292134831,
+        "support": 700
+      },
+      {
+        "label": "cs.LG",
+        "precision": 0.7339055793991416,
+        "recall": 0.7328571428571429,
+        "f1": 0.7333809864188706,
+        "support": 700
+      },
+      {
+        "label": "cs.CL",
+        "precision": 0.7823691460055097,
+        "recall": 0.8114285714285714,
+        "f1": 0.7966339410939691,
+        "support": 700
+      }
+    ],
+    "expected_overlap_pairs": [
+      {
+        "classes": [
+          "cs.AI",
+          "cs.LG"
+        ],
+        "left_to_right": 82,
+        "right_to_left": 52,
+        "left_to_right_rank": 1,
+        "right_to_left_rank": 4
+      },
+      {
+        "classes": [
+          "cs.LG",
+          "cs.CV"
+        ],
+        "left_to_right": 36,
+        "right_to_left": 41,
+        "left_to_right_rank": 7,
+        "right_to_left_rank": 5
+      },
+      {
+        "classes": [
+          "cs.LG",
+          "cs.CL"
+        ],
+        "left_to_right": 40,
+        "right_to_left": 26,
+        "left_to_right_rank": 6,
+        "right_to_left_rank": 14
+      }
+    ],
+    "major_pair_definition": "a direction ranks within the ten largest nonzero directed confusions",
+    "high_confidence_errors": {
+      "threshold": 0.9,
+      "count": 17,
+      "saved_count": 17,
+      "top_errors": [
+        {
+          "id": "2602.05599",
+          "true_label": "cs.AI",
+          "predicted_label": "cs.CL",
+          "predicted_probability": 0.9890014138701736,
+          "true_label_probability": 0.0026937804726687715
+        },
+        {
+          "id": "1904.00805",
+          "true_label": "cs.CL",
+          "predicted_label": "cs.SE",
+          "predicted_probability": 0.9827092940044174,
+          "true_label_probability": 0.009402214592624497
+        },
+        {
+          "id": "2208.07119",
+          "true_label": "cs.SE",
+          "predicted_label": "cs.CR",
+          "predicted_probability": 0.9720578700961217,
+          "true_label_probability": 0.01617630359385968
+        },
+        {
+          "id": "1904.13324",
+          "true_label": "cs.AI",
+          "predicted_label": "cs.RO",
+          "predicted_probability": 0.9488773707106934,
+          "true_label_probability": 0.023518681196716934
+        },
+        {
+          "id": "2507.02376",
+          "true_label": "cs.SE",
+          "predicted_label": "cs.CR",
+          "predicted_probability": 0.9375566053766031,
+          "true_label_probability": 0.0023177175261567123
+        },
+        {
+          "id": "1608.03643",
+          "true_label": "cs.LG",
+          "predicted_label": "cs.DS",
+          "predicted_probability": 0.9322308623166845,
+          "true_label_probability": 0.03854079540065126
+        },
+        {
+          "id": "2405.06371",
+          "true_label": "cs.CR",
+          "predicted_label": "cs.SE",
+          "predicted_probability": 0.9262964633130248,
+          "true_label_probability": 0.0655978618716462
+        },
+        {
+          "id": "1508.04627",
+          "true_label": "cs.CR",
+          "predicted_label": "cs.SE",
+          "predicted_probability": 0.9187975748432821,
+          "true_label_probability": 0.07503714363549786
+        },
+        {
+          "id": "2206.00352",
+          "true_label": "cs.LG",
+          "predicted_label": "cs.CR",
+          "predicted_probability": 0.9168282336637015,
+          "true_label_probability": 0.07056701398205167
+        },
+        {
+          "id": "2503.12192",
+          "true_label": "cs.SE",
+          "predicted_label": "cs.CR",
+          "predicted_probability": 0.9163275183534489,
+          "true_label_probability": 0.07619059644407399
+        },
+        {
+          "id": "2203.00283",
+          "true_label": "cs.RO",
+          "predicted_label": "cs.CV",
+          "predicted_probability": 0.9156378253402644,
+          "true_label_probability": 0.05748538982794725
+        },
+        {
+          "id": "2309.09120",
+          "true_label": "cs.AI",
+          "predicted_label": "cs.CL",
+          "predicted_probability": 0.9146770260755326,
+          "true_label_probability": 0.02761390522900258
+        },
+        {
+          "id": "2210.08731",
+          "true_label": "cs.AI",
+          "predicted_label": "cs.RO",
+          "predicted_probability": 0.9131523779960085,
+          "true_label_probability": 0.016566515635928404
+        },
+        {
+          "id": "2604.21743",
+          "true_label": "cs.AI",
+          "predicted_label": "cs.CV",
+          "predicted_probability": 0.9127892773591891,
+          "true_label_probability": 0.010883753789963377
+        },
+        {
+          "id": "2303.08509",
+          "true_label": "cs.SE",
+          "predicted_label": "cs.CR",
+          "predicted_probability": 0.9078790649626092,
+          "true_label_probability": 0.022021408277829245
+        },
+        {
+          "id": "2605.26747",
+          "true_label": "cs.AI",
+          "predicted_label": "cs.CL",
+          "predicted_probability": 0.9067355318213747,
+          "true_label_probability": 0.05258378407337931
+        },
+        {
+          "id": "2010.14500",
+          "true_label": "cs.LG",
+          "predicted_label": "cs.RO",
+          "predicted_probability": 0.9056042276309678,
+          "true_label_probability": 0.040781401758574684
+        }
+      ],
+      "note": "Logistic Regression probabilities are not separately calibrated."
+    }
+  },
+  "linear_svm": {
+    "total_errors": 994,
+    "top_confusion_pairs": [
+      {
+        "true_label": "cs.AI",
+        "predicted_label": "cs.LG",
+        "count": 89
+      },
+      {
+        "true_label": "cs.AI",
+        "predicted_label": "cs.CL",
+        "count": 76
+      },
+      {
+        "true_label": "cs.CL",
+        "predicted_label": "cs.AI",
+        "count": 73
+      },
+      {
+        "true_label": "cs.LG",
+        "predicted_label": "cs.AI",
+        "count": 66
+      },
+      {
+        "true_label": "cs.CV",
+        "predicted_label": "cs.LG",
+        "count": 46
+      },
+      {
+        "true_label": "cs.SE",
+        "predicted_label": "cs.CR",
+        "count": 40
+      },
+      {
+        "true_label": "cs.LG",
+        "predicted_label": "cs.CL",
+        "count": 38
+      },
+      {
+        "true_label": "cs.AI",
+        "predicted_label": "cs.CV",
+        "count": 35
+      },
+      {
+        "true_label": "cs.LG",
+        "predicted_label": "cs.CV",
+        "count": 35
+      },
+      {
+        "true_label": "cs.AI",
+        "predicted_label": "cs.SE",
+        "count": 33
+      }
+    ],
+    "lowest_f1_classes": [
+      {
+        "label": "cs.AI",
+        "precision": 0.656910569105691,
+        "recall": 0.5771428571428572,
+        "f1": 0.6144486692015209,
+        "support": 700
+      },
+      {
+        "label": "cs.LG",
+        "precision": 0.7122302158273381,
+        "recall": 0.7071428571428572,
+        "f1": 0.7096774193548387,
+        "support": 700
+      },
+      {
+        "label": "cs.CL",
+        "precision": 0.7855153203342619,
+        "recall": 0.8057142857142857,
+        "f1": 0.7954866008462623,
+        "support": 700
+      }
+    ],
+    "expected_overlap_pairs": [
+      {
+        "classes": [
+          "cs.AI",
+          "cs.LG"
+        ],
+        "left_to_right": 89,
+        "right_to_left": 66,
+        "left_to_right_rank": 1,
+        "right_to_left_rank": 4
+      },
+      {
+        "classes": [
+          "cs.LG",
+          "cs.CV"
+        ],
+        "left_to_right": 35,
+        "right_to_left": 46,
+        "left_to_right_rank": 9,
+        "right_to_left_rank": 5
+      },
+      {
+        "classes": [
+          "cs.LG",
+          "cs.CL"
+        ],
+        "left_to_right": 38,
+        "right_to_left": 28,
+        "left_to_right_rank": 7,
+        "right_to_left_rank": 12
+      }
+    ],
+    "major_pair_definition": "a direction ranks within the ten largest nonzero directed confusions",
+    "score_note": "Uncalibrated LinearSVC decision scores; predict_proba is unavailable."
+  }
+}
