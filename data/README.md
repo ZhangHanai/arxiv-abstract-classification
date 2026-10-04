@@ -136,10 +136,12 @@ and actual split counts. It has no machine-local absolute paths or timestamps;
 the same source/settings produce the same report in the tested environment.
 It does not pin dependencies or guarantee cross-version parquet byte identity.
 
-The integrity pass is verified with synthetic fixtures. A real snapshot still
-needs to be supplied, successfully preprocessed, and loaded with `load_splits()`
-before any measured baseline run. Source provenance/category interpretation and
-the training workflow remain outstanding.
+The integrity pass has now been verified with synthetic fixtures and the real
+version-306 snapshot. After the opt-in source-curation decision below, the
+pipeline produced 56,000 rows and `load_splits()` passed. See
+[`REAL_DATA_REPORT.md`](../REAL_DATA_REPORT.md) for exact counts, source identity,
+observed quality findings and reproducibility. The authoritative-primary-category
+interpretation and the training workflow remain outstanding.
 
 ## Reproduce the real-data profile
 
@@ -222,3 +224,9 @@ reject any duplicate surviving the curated source.
 This rule removes duplicate-group records, not all withdrawals, short abstracts,
 multi-category papers or semantic paraphrases. Such cases are flagged for
 inspection; no heuristic relabeling or unapproved extra filtering is performed.
+
+The [arXiv Atom API manual](https://info.arxiv.org/help/api/user-manual.html)
+documents an explicit `arxiv:primary_category` element. That separate API
+definition does not establish that the first token in this Kaggle JSON field is
+identical to it. This task verifies the operational first-token rule and does not
+claim a snapshot-wide comparison against that authoritative field.

@@ -1,0 +1,656 @@
+{
+  "schema_version": 1,
+  "preprocessing": {
+    "status": "failed",
+    "error": "Duplicate normalized text: selected samples row 43800 (ID '1206.6899') overlaps selected samples row 49631 (ID '1201.6078')"
+  },
+  "source": {
+    "filename": "arxiv-metadata-oai-snapshot.json",
+    "bytes": 5589459042,
+    "sha256": "b5c73be5958b20f4c07ea30a9352941bddfe59fed943dde6614e6d3415347c88"
+  },
+  "configuration": {
+    "seed": 42,
+    "classes": [
+      "cs.AI",
+      "cs.LG",
+      "cs.CL",
+      "cs.CV",
+      "cs.CR",
+      "cs.RO",
+      "cs.DS",
+      "cs.SE"
+    ],
+    "data": {
+      "raw_filename": "arxiv-metadata-oai-snapshot.json",
+      "decode_errors": "strict",
+      "samples_per_class": 7000,
+      "max_seq_length": 256,
+      "splits": {
+        "train": 0.8,
+        "val": 0.1,
+        "test": 0.1
+      }
+    }
+  },
+  "input_counts": {
+    "lines": 3195172,
+    "blank_lines": 0,
+    "invalid_utf8_lines": 0,
+    "malformed_json_lines": 0,
+    "non_object_lines": 0,
+    "records": 3195172
+  },
+  "sampling_counts": {
+    "non_target_records": 2626174,
+    "invalid_id_records": 0,
+    "invalid_abstract_records": 0,
+    "eligible_per_class": {
+      "cs.AI": 47611,
+      "cs.LG": 146755,
+      "cs.CL": 89123,
+      "cs.CV": 162351,
+      "cs.CR": 36233,
+      "cs.RO": 44779,
+      "cs.DS": 19220,
+      "cs.SE": 22926
+    },
+    "retained_per_class": {
+      "cs.AI": 7000,
+      "cs.LG": 7000,
+      "cs.CL": 7000,
+      "cs.CV": 7000,
+      "cs.CR": 7000,
+      "cs.RO": 7000,
+      "cs.DS": 7000,
+      "cs.SE": 7000
+    }
+  },
+  "shortfalls_from_cap": {
+    "cs.AI": 0,
+    "cs.LG": 0,
+    "cs.CL": 0,
+    "cs.CV": 0,
+    "cs.CR": 0,
+    "cs.RO": 0,
+    "cs.DS": 0,
+    "cs.SE": 0
+  },
+  "selected_pool_validation": "Duplicate normalized text: selected samples row 43800 (ID '1206.6899') overlaps selected samples row 49631 (ID '1201.6078')",
+  "selected_pool_duplicates": {
+    "ids": {
+      "repeated_groups": 0,
+      "extra_rows": 0
+    },
+    "exact_text": {
+      "repeated_groups": 2,
+      "extra_rows": 2
+    },
+    "normalized_text": {
+      "repeated_groups": 2,
+      "extra_rows": 2
+    }
+  },
+  "abstract_lengths_scope": "selected cleaned model text; whitespace tokens are not model tokenizer tokens",
+  "abstract_lengths": {
+    "overall": {
+      "characters": {
+        "count": 56000,
+        "min": 23,
+        "max": 3147,
+        "mean": 1241.4165892857143,
+        "std_population": 366.3109377483579,
+        "p05": 613.0,
+        "median": 1248.0,
+        "p95": 1848.0,
+        "p99": 1911.0
+      },
+      "whitespace_tokens": {
+        "count": 56000,
+        "min": 5,
+        "max": 487,
+        "mean": 174.94019642857143,
+        "std_population": 51.41170355880613,
+        "p05": 90.0,
+        "median": 174.0,
+        "p95": 261.0,
+        "p99": 288.0
+      }
+    },
+    "per_class": {
+      "cs.AI": {
+        "characters": {
+          "count": 7000,
+          "min": 62,
+          "max": 3147,
+          "mean": 1249.2777142857142,
+          "std_population": 373.47612700975156,
+          "p05": 592.95,
+          "median": 1262.0,
+          "p95": 1852.0,
+          "p99": 1913.0
+        },
+        "whitespace_tokens": {
+          "count": 7000,
+          "min": 9,
+          "max": 470,
+          "mean": 173.2062857142857,
+          "std_population": 50.56517452531446,
+          "p05": 87.0,
+          "median": 174.0,
+          "p95": 254.0,
+          "p99": 283.0100000000002
+        }
+      },
+      "cs.LG": {
+        "characters": {
+          "count": 7000,
+          "min": 103,
+          "max": 2334,
+          "mean": 1248.663,
+          "std_population": 334.1025779215975,
+          "p05": 693.0,
+          "median": 1248.0,
+          "p95": 1820.0,
+          "p99": 1911.0
+        },
+        "whitespace_tokens": {
+          "count": 7000,
+          "min": 16,
+          "max": 370,
+          "mean": 174.03628571428573,
+          "std_population": 46.33876621982409,
+          "p05": 98.0,
+          "median": 173.0,
+          "p95": 252.0,
+          "p99": 279.0
+        }
+      },
+      "cs.CL": {
+        "characters": {
+          "count": 7000,
+          "min": 249,
+          "max": 1920,
+          "mean": 1170.7472857142857,
+          "std_population": 325.6383291647408,
+          "p05": 643.0,
+          "median": 1160.0,
+          "p95": 1753.0499999999993,
+          "p99": 1895.0100000000002
+        },
+        "whitespace_tokens": {
+          "count": 7000,
+          "min": 36,
+          "max": 311,
+          "mean": 162.48285714285714,
+          "std_population": 44.424240395237796,
+          "p05": 92.0,
+          "median": 160.0,
+          "p95": 240.0,
+          "p99": 271.0
+        }
+      },
+      "cs.CV": {
+        "characters": {
+          "count": 7000,
+          "min": 45,
+          "max": 1920,
+          "mean": 1296.1914285714286,
+          "std_population": 309.786125642864,
+          "p05": 776.0,
+          "median": 1300.0,
+          "p95": 1813.0499999999993,
+          "p99": 1906.0100000000002
+        },
+        "whitespace_tokens": {
+          "count": 7000,
+          "min": 8,
+          "max": 313,
+          "mean": 178.98857142857142,
+          "std_population": 42.143349052819175,
+          "p05": 110.0,
+          "median": 178.0,
+          "p95": 250.0,
+          "p99": 273.0
+        }
+      },
+      "cs.CR": {
+        "characters": {
+          "count": 7000,
+          "min": 48,
+          "max": 2232,
+          "mean": 1263.8022857142857,
+          "std_population": 387.2134081879007,
+          "p05": 582.95,
+          "median": 1279.0,
+          "p95": 1872.0499999999993,
+          "p99": 1913.0
+        },
+        "whitespace_tokens": {
+          "count": 7000,
+          "min": 7,
+          "max": 340,
+          "mean": 178.898,
+          "std_population": 54.34318352838744,
+          "p05": 86.95000000000005,
+          "median": 180.0,
+          "p95": 266.0,
+          "p99": 289.0
+        }
+      },
+      "cs.RO": {
+        "characters": {
+          "count": 7000,
+          "min": 87,
+          "max": 2452,
+          "mean": 1250.5342857142857,
+          "std_population": 314.1056491445033,
+          "p05": 727.95,
+          "median": 1251.0,
+          "p95": 1786.0,
+          "p99": 1908.0
+        },
+        "whitespace_tokens": {
+          "count": 7000,
+          "min": 13,
+          "max": 373,
+          "mean": 173.63614285714286,
+          "std_population": 42.90057651270492,
+          "p05": 104.0,
+          "median": 173.0,
+          "p95": 246.0,
+          "p99": 272.0
+        }
+      },
+      "cs.DS": {
+        "characters": {
+          "count": 7000,
+          "min": 42,
+          "max": 2445,
+          "mean": 1169.3674285714285,
+          "std_population": 449.81629821417323,
+          "p05": 435.0,
+          "median": 1159.0,
+          "p95": 1886.0,
+          "p99": 1911.0
+        },
+        "whitespace_tokens": {
+          "count": 7000,
+          "min": 7,
+          "max": 405,
+          "mean": 176.7642857142857,
+          "std_population": 68.01000879222387,
+          "p05": 67.0,
+          "median": 175.0,
+          "p95": 285.0,
+          "p99": 308.0
+        }
+      },
+      "cs.SE": {
+        "characters": {
+          "count": 7000,
+          "min": 23,
+          "max": 3072,
+          "mean": 1282.7492857142856,
+          "std_population": 392.21060541434855,
+          "p05": 601.0,
+          "median": 1303.0,
+          "p95": 1879.0,
+          "p99": 1915.0
+        },
+        "whitespace_tokens": {
+          "count": 7000,
+          "min": 5,
+          "max": 487,
+          "mean": 181.50914285714285,
+          "std_population": 55.07603240048789,
+          "p05": 87.0,
+          "median": 184.0,
+          "p95": 267.0,
+          "p99": 287.0
+        }
+      }
+    }
+  },
+  "source_audit": {
+    "invalid_or_missing_categories": 0,
+    "multiple_category_tokens": 1544124,
+    "category_tokens_not_lexicographically_sorted": 919563,
+    "selected_source_occurrences": 56000,
+    "selected_first_token_label_mismatches": 0,
+    "selected_cleaned_text_mismatches": 0,
+    "selected_multiple_category_tokens": 28164,
+    "selected_multiple_configured_category_tokens": 17777,
+    "selected_at_most_30_whitespace_tokens": 130,
+    "selected_more_than_1000_whitespace_tokens": 0,
+    "selected_with_withdrawal_marker": 101,
+    "selected_ids_not_found_in_source": 0
+  },
+  "source_audit_scope": "selected samples; split assignments exist only if preprocessing passed",
+  "source_audit_thresholds": {
+    "very_short_max_whitespace_tokens": 30,
+    "very_long_min_whitespace_tokens_exclusive": 1000,
+    "withdrawal_marker": "case-insensitive substring 'withdrawn' in title/abstract/comments; heuristic, not confirmed withdrawal"
+  },
+  "representative_examples": [
+    {
+      "id": "1512.09075",
+      "label": "cs.AI",
+      "selection": [
+        "shortest"
+      ],
+      "title": "A Notation for Markov Decision Processes",
+      "source_categories": "cs.AI",
+      "whitespace_tokens": 9,
+      "characters": 62,
+      "text_excerpt": "This paper specifies a notation for Markov decision processes.",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2501.00223",
+      "label": "cs.AI",
+      "selection": [
+        "median_length"
+      ],
+      "title": "CancerKG.ORG A Web-scale, Interactive, Verifiable Knowledge Graph-LLM\n  Hybrid for Assisting with Optimal Cancer Treatment and Care",
+      "source_categories": "cs.AI cs.IR cs.LG",
+      "whitespace_tokens": 174,
+      "characters": 1124,
+      "text_excerpt": "Here, we describe one of the first Web-scale hybrid Knowledge Graph (KG)-Large Language Model (LLM), populated with the latest peer-reviewed medical knowledge on colorectal Cancer. It is currently being evaluated to assist with both medical",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "1304.3446",
+      "label": "cs.AI",
+      "selection": [
+        "longest"
+      ],
+      "title": "Intelligent Probabilistic Inference",
+      "source_categories": "cs.AI",
+      "whitespace_tokens": 470,
+      "characters": 3147,
+      "text_excerpt": "The analysis of practical probabilistic models on the computer demands a convenient representation for the available knowledge and an efficient algorithm to perform inference. An appealing representation is the influence diagram, a network ",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2405.03720",
+      "label": "cs.LG",
+      "selection": [
+        "shortest"
+      ],
+      "title": "Spatial Transfer Learning with Simple MLP",
+      "source_categories": "cs.LG stat.ME stat.ML",
+      "whitespace_tokens": 16,
+      "characters": 103,
+      "text_excerpt": "First step to investigate the potential of transfer learning applied to the field of spatial statistics",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2605.24583",
+      "label": "cs.LG",
+      "selection": [
+        "median_length"
+      ],
+      "title": "Measuring Alignment-Induced Activation Shifts Correctly: A Template-Controlled Difference-in-Differences Protocol",
+      "source_categories": "cs.LG cs.CL stat.ML",
+      "whitespace_tokens": 173,
+      "characters": 1225,
+      "text_excerpt": "Comparing a model's internal activations before and after alignment is a natural way to ask what safety training changes: one forms the matrix of paired aligned-minus-base activations on safety-relevant inputs and reads off its effective ra",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2302.03689",
+      "label": "cs.LG",
+      "selection": [
+        "longest"
+      ],
+      "title": "PartitionVAE -- a human-interpretable VAE",
+      "source_categories": "cs.LG cs.CV",
+      "whitespace_tokens": 370,
+      "characters": 2256,
+      "text_excerpt": "VAEs, or variational autoencoders, are autoencoders that explicitly learn the distribution of the input image space rather than assuming no prior information about the distribution. This allows it to classify similar samples close to each o",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "1809.03068",
+      "label": "cs.CL",
+      "selection": [
+        "shortest"
+      ],
+      "title": "A case for deep learning in semantics",
+      "source_categories": "cs.CL",
+      "whitespace_tokens": 36,
+      "characters": 282,
+      "text_excerpt": "Pater's target article builds a persuasive case for establishing stronger ties between theoretical linguistics and connectionism (deep learning). This commentary extends his arguments to semantics, focusing in particular on issues of learni",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2609.19291",
+      "label": "cs.CL",
+      "selection": [
+        "median_length"
+      ],
+      "title": "Why Pretraining Fails to Share Cross-Lingual Knowledge",
+      "source_categories": "cs.CL cs.AI cs.LG",
+      "whitespace_tokens": 160,
+      "characters": 1201,
+      "text_excerpt": "Large Language Models (LLMs) have made remarkable progress in the processing and modeling of many languages. Yet, unlike human multilinguals, they exhibit surprisingly limited cross-lingual knowledge transfer. While this limitation is well ",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2609.31181",
+      "label": "cs.CL",
+      "selection": [
+        "longest"
+      ],
+      "title": "Where a Model Sends Its Own Repeated Token",
+      "source_categories": "cs.CL",
+      "whitespace_tokens": 311,
+      "characters": 1904,
+      "text_excerpt": "Black-box model identification works by scoring a model's response to natural-language prompts. One line of work feeds models a degenerate input -- their own token, repeated -- to find a failure mode rather than an identity. We take that in",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "1503.01557",
+      "label": "cs.CV",
+      "selection": [
+        "shortest"
+      ],
+      "title": "Supervised Discrete Hashing",
+      "source_categories": "cs.CV",
+      "whitespace_tokens": 8,
+      "characters": 45,
+      "text_excerpt": "This paper has been withdrawn by the authour.",
+      "withdrawal_marker": true
+    },
+    {
+      "id": "2601.11269",
+      "label": "cs.CV",
+      "selection": [
+        "median_length"
+      ],
+      "title": "X-Distill: Cross-Architecture Vision Distillation for Visuomotor Learning",
+      "source_categories": "cs.CV cs.AI",
+      "whitespace_tokens": 178,
+      "characters": 1375,
+      "text_excerpt": "Visuomotor policies often leverage large pre-trained Vision Transformers (ViTs) for their powerful generalization capabilities. However, their significant data requirements present a major challenge in the data-scarce context of most roboti",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2205.11378",
+      "label": "cs.CV",
+      "selection": [
+        "longest"
+      ],
+      "title": "Markedness in Visual Semantic AI",
+      "source_categories": "cs.CV cs.AI cs.CL cs.CY cs.LG",
+      "whitespace_tokens": 313,
+      "characters": 1911,
+      "text_excerpt": "We evaluate the state-of-the-art multimodal \"visual semantic\" model CLIP (\"Contrastive Language Image Pretraining\") for biases related to the marking of age, gender, and race or ethnicity. Given the option to label an image as \"a photo of a",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "1712.06850",
+      "label": "cs.CR",
+      "selection": [
+        "shortest"
+      ],
+      "title": "A comparison of web privacy protection techniques",
+      "source_categories": "cs.CR cs.CY",
+      "whitespace_tokens": 7,
+      "characters": 49,
+      "text_excerpt": "A comparison of web privacy protection techniques",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2511.03995",
+      "label": "cs.CR",
+      "selection": [
+        "median_length"
+      ],
+      "title": "Hybrid Fuzzing with LLM-Guided Input Mutation and Semantic Feedback",
+      "source_categories": "cs.CR cs.AI",
+      "whitespace_tokens": 180,
+      "characters": 1393,
+      "text_excerpt": "Software fuzzing has become a cornerstone in automated vulnerability discovery, yet existing mutation strategies often lack semantic awareness, leading to redundant test cases and slow exploration of deep program states. In this work, I pre",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2208.08173",
+      "label": "cs.CR",
+      "selection": [
+        "longest"
+      ],
+      "title": "An In-depth Study of Java Deserialization Remote-Code Execution Exploits\n  and Vulnerabilities",
+      "source_categories": "cs.CR cs.SE",
+      "whitespace_tokens": 340,
+      "characters": 2232,
+      "text_excerpt": "Nowadays, an increasing number of applications uses deserialization. This technique, based on rebuilding the instance of objects from serialized byte streams, can be dangerous since it can open the application to attacks such as remote code",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "1610.02573",
+      "label": "cs.RO",
+      "selection": [
+        "shortest"
+      ],
+      "title": "Proceedings of the 1st International Workshop on Robot Learning and\n  Planning (RLP 2016)",
+      "source_categories": "cs.RO",
+      "whitespace_tokens": 13,
+      "characters": 87,
+      "text_excerpt": "Proceedings of the 1st International Workshop on Robot Learning and Planning (RLP 2016)",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2209.06761",
+      "label": "cs.RO",
+      "selection": [
+        "median_length"
+      ],
+      "title": "Online Whole-body Motion Planning for Quadrotor using Multi-resolution\n  Search",
+      "source_categories": "cs.RO",
+      "whitespace_tokens": 173,
+      "characters": 1278,
+      "text_excerpt": "In this paper, we address the problem of online quadrotor whole-body motion planning (SE(3) planning) in unknown and unstructured environments. We propose a novel multi-resolution search method, which discovers narrow areas requiring full p",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2407.06629",
+      "label": "cs.RO",
+      "selection": [
+        "longest"
+      ],
+      "title": "Collision and Obstacle Avoidance for Industrial Autonomous Vehicles --\n  Simulation and Experimentation Based on a Cooperative Approach",
+      "source_categories": "cs.RO",
+      "whitespace_tokens": 373,
+      "characters": 2452,
+      "text_excerpt": "One of the challenges of Industry 4.0, is to determine and optimize the flow of data, products and materials in manufacturing companies. To realize these challenges, many solutions have been defined such as the utilization of automated guid",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "1105.2391",
+      "label": "cs.DS",
+      "selection": [
+        "shortest"
+      ],
+      "title": "LP-Based Approximation Algorithms for Traveling Salesman Path Problems",
+      "source_categories": "cs.DS",
+      "whitespace_tokens": 7,
+      "characters": 42,
+      "text_excerpt": "This paper has been merged into 1110.4604.",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "1803.11105",
+      "label": "cs.DS",
+      "selection": [
+        "median_length"
+      ],
+      "title": "Frequent Item-set Mining without Ubiquitous Items",
+      "source_categories": "cs.DS cs.DB",
+      "whitespace_tokens": 175,
+      "characters": 1137,
+      "text_excerpt": "Frequent Item-set Mining (FIM), sometimes called Market Basket Analysis (MBA) or Association Rule Learning (ARL), are Machine Learning (ML) methods for creating rules from datasets of transactions of items. Most methods identify items likel",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2501.11380",
+      "label": "cs.DS",
+      "selection": [
+        "longest"
+      ],
+      "title": "Complexity Gaps between Point and Interval Temporal Graphs for some Reachability Problems",
+      "source_categories": "cs.DS math.CO",
+      "whitespace_tokens": 405,
+      "characters": 2445,
+      "text_excerpt": "Temporal graphs arise when modeling interactions that evolve over time. They usually come in several flavors, depending on the number of parameters used to describe the temporal aspects of the interactions: time of appearance, duration, del",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "cs/0609024",
+      "label": "cs.SE",
+      "selection": [
+        "shortest"
+      ],
+      "title": "Linux, Open Source and Unicode",
+      "source_categories": "cs.SE",
+      "whitespace_tokens": 5,
+      "characters": 23,
+      "text_excerpt": "The paper is taken out.",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2101.04363",
+      "label": "cs.SE",
+      "selection": [
+        "median_length"
+      ],
+      "title": "The Daily Life of Software Engineers during the COVID-19 Pandemic",
+      "source_categories": "cs.SE",
+      "whitespace_tokens": 184,
+      "characters": 1304,
+      "text_excerpt": "Following the onset of the COVID-19 pandemic and subsequent lockdowns, software engineers' daily life was disrupted and abruptly forced into remote working from home. This change deeply impacted typical working routines, affecting both well",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2206.14606",
+      "label": "cs.SE",
+      "selection": [
+        "longest"
+      ],
+      "title": "Building a Secure Software Supply Chain with GNU Guix",
+      "source_categories": "cs.SE cs.PL",
+      "whitespace_tokens": 487,
+      "characters": 3072,
+      "text_excerpt": "The software supply chain is becoming a widespread analogy to designate the series of steps taken to go from source code published by developers to executables running on the users? computers. A security vulnerability in any of these steps ",
+      "withdrawal_marker": false
+    }
+  ],
+  "label_rule": "first whitespace-separated category token; authoritative primary-category semantics not established by the Kaggle data card",
+  "reproducibility": {
+    "repeat_requested": true,
+    "status": "not_run"
+  },
+  "ready_for_baseline_data_input": false,
+  "produced_split_rows": null
+}

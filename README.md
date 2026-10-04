@@ -10,7 +10,7 @@ The project is intended to demonstrate an end-to-end, reproducible text classifi
 
 ## Dataset
 
-The project will use the Cornell University arXiv metadata dataset distributed through Kaggle. Dataset acquisition instructions are documented in [`data/README.md`](data/README.md).
+The project uses the Cornell University arXiv metadata dataset distributed through Kaggle. Dataset acquisition and the observed version-306 run are documented in [`data/README.md`](data/README.md) and [`REAL_DATA_REPORT.md`](REAL_DATA_REPORT.md).
 
 ## Classification Task
 
@@ -18,8 +18,11 @@ The current configuration selects eight computer-science categories and uses the
 first token in each record's `categories` field as its label. Defaults request
 up to 7,000 samples per class and seeded 80/10/10 splits. See
 [`data/README.md`](data/README.md) for rounding, shortfall, encoding, and duplicate
-rejection rules. These defaults have been tested with synthetic data; a real
-snapshot and its category-ordering semantics have not yet been audited.
+rejection rules. The first real snapshot produced 56,000 validated rows after
+the documented opt-in exclusion of all eligible duplicate-group members.
+Use `config/real_data.yaml` to reproduce that run. The first-token label rule is
+verified against all selected source records; its equivalence to an authoritative
+primary category has not been established for this JSON snapshot.
 
 ## Planned Models
 
@@ -52,12 +55,16 @@ python -m pip install -r requirements.txt
 python -B -m pytest -q -p no:cacheprovider
 ```
 
-After manually obtaining the raw snapshot, run `python -m src.data.preprocess`.
+After manually obtaining the version-pinned raw snapshot, follow the curation,
+preprocessing and profiling commands in [`data/README.md`](data/README.md).
+The unmodified snapshot intentionally fails the default reject-only duplicate
+guard; the explicit real-data configuration uses a separately derived source.
 Use `src.data.dataset.load_splits()` to validate the complete dataset before
 training. Configuration/data paths, explicit encoding policies, counted filtering,
 source fingerprints, and failure behavior are documented in
-[`data/README.md`](data/README.md). Dependencies remain unpinned; real-data
-verification, baseline training, and CI remain unfinished.
+[`data/README.md`](data/README.md). The real-data bundle passes integrity checks
+and repeated runs match in the recorded environment. Dependencies remain
+unpinned; baseline training and CI remain unfinished. No model has been trained.
 
 ## Limitations and Future Work
 

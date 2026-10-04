@@ -1,0 +1,14 @@
+{
+  "git_head_at_run": "3d836984e0a4bc5dde9167a924ed16f60e8e99c7",
+  "code_sha256": {
+    "src/data/curate.py": "ddf51671b1bf4b14e06e0cb19eede88380c9701bfeef772bc40d987e2172e812",
+    "src/data/integrity.py": "49937e1399d1ffa0cc51cbc62caada49ceda7b14e63477df7f1c897df15b7732",
+    "src/data/preprocess.py": "739428fd4d981a6218adee5d157c1462b0d22add753d6965325ddbb45c94dc0a",
+    "src/config.py": "d28e2fea31733f0ad1b1c65d9bd9af566085c49cbbf534498f8306baa838e8bd"
+  },
+  "timings": {
+    "identity_scan_seconds": 121.11609429999953,
+    "curation_write_seconds": 182.20109700000103
+  },
+  "timing_note": "time.perf_counter measurements for two complete source passes; no extrapolation"
+}

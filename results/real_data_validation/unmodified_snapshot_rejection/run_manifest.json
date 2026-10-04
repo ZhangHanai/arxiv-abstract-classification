@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "observed_utc": "2026-10-04T12:14:58.602244+00:00",
+  "source_provider": {
+    "schema_version": 1,
+    "provider": "Kaggle",
+    "dataset_ref": "Cornell-University/arxiv",
+    "dataset_id": 612177,
+    "title": "arXiv Dataset",
+    "source_page": "https://www.kaggle.com/datasets/Cornell-University/arxiv",
+    "metadata_endpoint": "https://www.kaggle.com/api/v1/datasets/view/Cornell-University/arxiv",
+    "dataset_version": 306,
+    "version_created_utc": "2026-10-03T23:53:00.087Z",
+    "version_notes": "Adds recent announced papers",
+    "provider_reported_total_bytes": 5589459042,
+    "metadata_license": "CC0: Public Domain",
+    "expected_raw_filename": "arxiv-metadata-oai-snapshot.json",
+    "archive_download_endpoint": "https://www.kaggle.com/api/v1/datasets/download/Cornell-University/arxiv?datasetVersionNumber=306",
+    "archive_content_length_observed": 1852304107,
+    "archive_bytes_observed": 1852304107,
+    "archive_sha256_observed": "b078129ac784a5a67901e06b8bed934180810a36c72eb9dacce78464d33143fa",
+    "raw_bytes_observed": 5589459042,
+    "raw_sha256_observed": "b5c73be5958b20f4c07ea30a9352941bddfe59fed943dde6614e6d3415347c88",
+    "zip_member_crc32_observed": "69fd6fa2",
+    "zip_member_timestamp_observed": "2026-10-03 23:55:30 (ZIP local timestamp; timezone unspecified)",
+    "acquisition": "Manually initiated download of the official version-pinned Kaggle archive, then local extraction; no third-party mirror or repository downloader. The public archive endpoint presented no login or additional dataset-terms prompt."
+  },
+  "raw_file": {
+    "filename": "arxiv-metadata-oai-snapshot.json",
+    "bytes": 5589459042,
+    "sha256": "b5c73be5958b20f4c07ea30a9352941bddfe59fed943dde6614e6d3415347c88"
+  },
+  "configuration": {
+    "seed": 42,
+    "classes": [
+      "cs.AI",
+      "cs.LG",
+      "cs.CL",
+      "cs.CV",
+      "cs.CR",
+      "cs.RO",
+      "cs.DS",
+      "cs.SE"
+    ],
+    "data": {
+      "raw_filename": "arxiv-metadata-oai-snapshot.json",
+      "decode_errors": "strict",
+      "samples_per_class": 7000,
+      "max_seq_length": 256,
+      "splits": {
+        "train": 0.8,
+        "val": 0.1,
+        "test": 0.1
+      }
+    }
+  },
+  "timings": {
+    "preprocessing_seconds": 36.66829019999932,
+    "rejected_pool_reconstruction_seconds": 85.20565419999912,
+    "source_audit_seconds": 103.30534500000067
+  },
+  "runtime": {
+    "python": "3.13.5",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "packages": {
+      "pandas": "3.0.6",
+      "pyarrow": "25.0.1",
+      "pyyaml": "6.0.3",
+      "scikit-learn": "1.9.1",
+      "pytest": "9.1.1"
+    }
+  },
+  "git_head_at_run": "36c39e829777bf04c87f4653820f2686411d3e4a",
+  "code_sha256": {
+    "config/config.yaml": "bc9e1b2dee59c413868a2eb41043189cc6adfe81fea572999428340e6f603d6b",
+    "src/config.py": "d28e2fea31733f0ad1b1c65d9bd9af566085c49cbbf534498f8306baa838e8bd",
+    "src/data/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/data/dataset.py": "a4bd3b11fa98f437a0e571eebd1994cba38d2671015e0d3bd28cef3829eb9aba",
+    "src/data/integrity.py": "49937e1399d1ffa0cc51cbc62caada49ceda7b14e63477df7f1c897df15b7732",
+    "src/data/preprocess.py": "739428fd4d981a6218adee5d157c1462b0d22add753d6965325ddbb45c94dc0a",
+    "src/data/profile.py": "20ad91a5885dd5189268edefaaae99cea83a6f6531ca7b3763eda5fda6cb251f"
+  },
+  "artifacts": {},
+  "timing_note": "Measured with time.perf_counter(); source audit, repeat and loading are separate; not an extrapolated benchmark."
+}

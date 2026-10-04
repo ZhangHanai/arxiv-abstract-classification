@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "source_provider": {
+    "schema_version": 1,
+    "provider": "Kaggle",
+    "dataset_ref": "Cornell-University/arxiv",
+    "dataset_id": 612177,
+    "title": "arXiv Dataset",
+    "source_page": "https://www.kaggle.com/datasets/Cornell-University/arxiv",
+    "metadata_endpoint": "https://www.kaggle.com/api/v1/datasets/view/Cornell-University/arxiv",
+    "dataset_version": 306,
+    "version_created_utc": "2026-10-03T23:53:00.087Z",
+    "version_notes": "Adds recent announced papers",
+    "provider_reported_total_bytes": 5589459042,
+    "metadata_license": "CC0: Public Domain",
+    "expected_raw_filename": "arxiv-metadata-oai-snapshot.json",
+    "archive_download_endpoint": "https://www.kaggle.com/api/v1/datasets/download/Cornell-University/arxiv?datasetVersionNumber=306",
+    "archive_content_length_observed": 1852304107,
+    "archive_bytes_observed": 1852304107,
+    "archive_sha256_observed": "b078129ac784a5a67901e06b8bed934180810a36c72eb9dacce78464d33143fa",
+    "raw_bytes_observed": 5589459042,
+    "raw_sha256_observed": "b5c73be5958b20f4c07ea30a9352941bddfe59fed943dde6614e6d3415347c88",
+    "zip_member_crc32_observed": "69fd6fa2",
+    "zip_member_timestamp_observed": "2026-10-03 23:55:30 (ZIP local timestamp; timezone unspecified)",
+    "acquisition": "Manually initiated download of the official version-pinned Kaggle archive, then local extraction; no third-party mirror or repository downloader. The public archive endpoint presented no login or additional dataset-terms prompt."
+  },
+  "source": {
+    "filename": "arxiv-metadata-oai-snapshot.json",
+    "bytes": 5589459042,
+    "sha256": "b5c73be5958b20f4c07ea30a9352941bddfe59fed943dde6614e6d3415347c88"
+  },
+  "derived_source": {
+    "filename": "arxiv-metadata-oai-snapshot.curated.jsonl",
+    "bytes": 1108749510,
+    "sha256": "d0100471cc2da0ec4d998e5754c79fef0f9bef2271c69fe8efd861a90c66ae68"
+  },
+  "classes": [
+    "cs.AI",
+    "cs.LG",
+    "cs.CL",
+    "cs.CV",
+    "cs.CR",
+    "cs.RO",
+    "cs.DS",
+    "cs.SE"
+  ],
+  "policy": "exclude every eligible member of any repeated stripped-ID or normalized-text group; no keep-first, relabeling, seed changes or cap changes",
+  "scope": "all records eligible for configured first-token classes under existing ID/abstract filtering, before reservoir sampling",
+  "equality": "stripped ID; full normalized string equality using src.data.integrity.text_identity (not hash-based grouping)",
+  "input_counts": {
+    "lines": 3195172,
+    "blank_lines": 0,
+    "invalid_utf8_lines": 0,
+    "malformed_json_lines": 0,
+    "non_object_lines": 0,
+    "records": 3195172
+  },
+  "filtering_counts": {
+    "non_target_records": 2626174,
+    "invalid_id_records": 0,
+    "invalid_abstract_records": 0
+  },
+  "eligible_per_class_before_curation": {
+    "cs.AI": 47611,
+    "cs.LG": 146755,
+    "cs.CL": 89123,
+    "cs.CV": 162351,
+    "cs.CR": 36233,
+    "cs.RO": 44779,
+    "cs.DS": 19220,
+    "cs.SE": 22926
+  },
+  "duplicate_groups": {
+    "ids": 0,
+    "normalized_text": 163
+  },
+  "duplicate_group_member_occurrences": {
+    "ids": 0,
+    "normalized_text": 331
+  },
+  "excluded_per_class": {
+    "cs.AI": 54,
+    "cs.LG": 97,
+    "cs.CL": 32,
+    "cs.CV": 66,
+    "cs.CR": 31,
+    "cs.RO": 23,
+    "cs.DS": 10,
+    "cs.SE": 18
+  },
+  "excluded_total": 331,
+  "exclusion_reasons": {
+    "id_only": 0,
+    "text_only": 331,
+    "id_and_text": 0
+  },
+  "eligible_per_class_after_curation": {
+    "cs.AI": 47557,
+    "cs.LG": 146658,
+    "cs.CL": 89091,
+    "cs.CV": 162285,
+    "cs.CR": 36202,
+    "cs.RO": 44756,
+    "cs.DS": 19210,
+    "cs.SE": 22908
+  },
+  "derived_records": 568667,
+  "duplicate_group_examples": {
+    "ids": [],
+    "normalized_text": [
+      {
+        "normalized_sha256": "a0b2a692ceff52a4fb4e46b74f528f5010f00fcabc9f22e173aab36af62bf905",
+        "normalized_excerpt": "a bayesian network is a widely used probabilistic graphical model with applications in knowledge discovery and prediction. learning a bayesian network (bn) from",
+        "up_to_five_members": [
+          {
+            "id": "1811.05039",
+            "label": "cs.AI"
+          },
+          {
+            "id": "2008.13618",
+            "label": "cs.AI"
+          }
+        ]
+      },
+      {
+        "normalized_sha256": "70b53be951adb6677d0bec43d882455c0d5da62d4fd33e84916bbff87c440fa6",
+        "normalized_excerpt": "a key task in artificial intelligence is learning effective policies for controlling agents in unknown environments to optimize performance measures. off-policy",
+        "up_to_five_members": [
+          {
+            "id": "2505.11478",
+            "label": "cs.AI"
+          },
+          {
+            "id": "2510.21110",
+            "label": "cs.AI"
+          }
+        ]
+      },
+      {
+        "normalized_sha256": "dcef140e793799cdc7ea8e6bd75379f45ac996e549730eb099ecebe5a568b8cf",
+        "normalized_excerpt": "a lattice-theoretic framework is introduced that permits the study of the conditional independence (ci) implication problem relative to the class of discrete pr",
+        "up_to_five_members": [
+          {
+            "id": "0810.5717",
+            "label": "cs.AI"
+          },
+          {
+            "id": "1408.2030",
+            "label": "cs.AI"
+          }
+        ]
+      },
+      {
+        "normalized_sha256": "e0c761746faaa512aa9817e0fd348d912af3b1fab83e10c7b71af504573b53bc",
+        "normalized_excerpt": "a long-term visual object tracking performance evaluation methodology and a benchmark are proposed. performance measures are designed by following a long-term t",
+        "up_to_five_members": [
+          {
+            "id": "1906.08675",
+            "label": "cs.CV"
+          },
+          {
+            "id": "1907.00618",
+            "label": "cs.CV"
+          }
+        ]
+      },
+      {
+        "normalized_sha256": "c737f3942f2302d477b0a8375e8941329fe4b4d87ef8a45072c283a196ad2b68",
+        "normalized_excerpt": "a significant theoretical advantage of search-and-score methods for learning bayesian networks is that they can accept informative prior beliefs for each possib",
+        "up_to_five_members": [
+          {
+            "id": "1209.6561",
+            "label": "cs.AI"
+          },
+          {
+            "id": "1408.2057",
+            "label": "cs.AI"
+          }
+        ]
+      }
+    ]
+  },
+  "exclusions_audit": {
+    "filename": "curation_exclusions.jsonl",
+    "bytes": 55850,
+    "sha256": "282ec0b388fac520fbdd1dd98344a086468018757baf38753ebf425e0415128c",
+    "rows": 331,
+    "committed": false
+  },
+  "raw_source_preserved": true,
+  "labels_changed": 0
+}

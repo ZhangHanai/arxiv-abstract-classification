@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "comparisons": {
+    "source": true,
+    "classes": true,
+    "policy": true,
+    "scope": true,
+    "equality": true,
+    "input_counts": true,
+    "filtering_counts": true,
+    "eligible_per_class_before_curation": true,
+    "duplicate_groups": true,
+    "duplicate_group_member_occurrences": true,
+    "excluded_per_class": true,
+    "excluded_total": true,
+    "exclusion_reasons": true,
+    "eligible_per_class_after_curation": true,
+    "derived_records": true,
+    "duplicate_group_examples": true,
+    "exclusions_audit": true,
+    "raw_source_preserved": true,
+    "labels_changed": true,
+    "derived_bytes_identical": true,
+    "derived_sha256_identical": true
+  },
+  "derived_sha256": "d0100471cc2da0ec4d998e5754c79fef0f9bef2271c69fe8efd861a90c66ae68",
+  "repeated_run": {
+    "git_head_at_run": "cf5424cf92f63616dd48c90fa491e86130b528a4",
+    "code_sha256": {
+      "src/data/curate.py": "ddf51671b1bf4b14e06e0cb19eede88380c9701bfeef772bc40d987e2172e812",
+      "src/data/integrity.py": "49937e1399d1ffa0cc51cbc62caada49ceda7b14e63477df7f1c897df15b7732",
+      "src/data/preprocess.py": "739428fd4d981a6218adee5d157c1462b0d22add753d6965325ddbb45c94dc0a",
+      "src/config.py": "d28e2fea31733f0ad1b1c65d9bd9af566085c49cbbf534498f8306baa838e8bd"
+    },
+    "timings": {
+      "identity_scan_seconds": 147.70344660000046,
+      "curation_write_seconds": 199.5780111000022
+    },
+    "timing_note": "time.perf_counter measurements for two complete source passes; no extrapolation"
+  },
+  "scope": "two independent full-source curation executions; output filenames differ only for temporary isolation",
+  "temporary_derived_file_removed": true
+}
