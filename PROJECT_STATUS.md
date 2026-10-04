@@ -1,12 +1,31 @@
 # Project Status
 
+## Verified milestone on 2026-10-04
+
+[PR #5](https://github.com/ZhangHanai/arxiv-abstract-classification/pull/5)
+was merged into `main` at `cfccf369c54f4d04ed507bbe2d2dadb8b55d2223`.
+The integrity increment was rebased without conflicts, passed **128 tests in
+9.48s**, and is preserved separately in open
+[PR #6](https://github.com/ZhangHanai/arxiv-abstract-classification/pull/6).
+
+The `codex/real-data-validation` branch has completed the first real-data run
+using Cornell/Kaggle snapshot version 306. The unmodified source was rejected
+for duplicate text. The user authorized a separate opt-in exclusion of every
+eligible duplicate-group member: 331 records in 163 normalized-text groups.
+The curated source produced **56,000 validated rows**, **7,000 per class**,
+with **44,800 / 5,600 / 5,600** train/validation/test rows. Repeated preprocessing
+and public loading passed, and the source/row/artifact identities are recorded
+in [`REAL_DATA_REPORT.md`](REAL_DATA_REPORT.md). Raw and processed data stay
+local and ignored. No model training or measured model results exist.
+
 ## What this repository is
 
 `arxiv-abstract-classification` is a self-initiated NLP portfolio project created to demonstrate text classification, reproducible ML engineering, and later Transformer fine-tuning for graduate-school applications.
 
 It is not a course assignment, competition project, or published research project.
 
-The intended task is to classify arXiv computer-science abstracts into eight primary categories:
+The intended task is to classify arXiv computer-science abstracts into eight
+configured categories, using the first token in the source `categories` field:
 
 - `cs.AI` — Artificial Intelligence
 - `cs.LG` — Machine Learning
@@ -21,7 +40,10 @@ The intended research/engineering comparison is between classical TF-IDF linear 
 
 ## What is actually implemented on `main`
 
-As of the current repository state, development reached the data-engineering layer and then stopped.
+At main commit `cfccf369c54f4d04ed507bbe2d2dadb8b55d2223`, the repository
+contains the original data-engineering layer plus shared evaluation. Integrity
+hardening and real-data validation are on the separate review branches described
+above.
 
 Implemented:
 
@@ -30,7 +52,7 @@ Implemented:
 - repository-root-aware YAML configuration;
 - deterministic class definitions and path resolution;
 - streaming parsing of the large arXiv JSONL metadata file;
-- primary-category extraction;
+- first-category-token extraction;
 - light text cleaning;
 - deterministic per-class reservoir sampling;
 - stratified train/validation/test splitting;
@@ -38,14 +60,15 @@ Implemented:
 - processed split loading;
 - label validation and configured label-ID mapping;
 - unit tests for configuration, preprocessing, and dataset loading.
+- shared accuracy, macro/weighted F1, per-class metrics and confusion matrices;
+- saved evaluation JSON/CSV and aligned prediction parquet artifacts;
+- synthetic evaluation tests; no measured model performance.
 
 Not yet implemented on `main`:
 
 - TF-IDF + Logistic Regression baseline;
 - Linear SVM baseline;
 - training scripts;
-- shared evaluation utilities;
-- confusion matrices and saved prediction artifacts;
 - error-analysis pipeline;
 - DistilBERT tokenization/data module;
 - DistilBERT fine-tuning;
@@ -82,14 +105,17 @@ Added `src/data/dataset.py` and dataset-loading tests covering configured label 
 Recorded new dataset tests: `8 passed`.
 The three existing test files therefore contain 4 + 9 + 8 = 21 tests, and the PR records state that the full suite passed at the time.
 
-Development appears to have stopped after this data-loading layer.
+The initial development history stopped at this data-loading layer. PR #5 then
+added archaeology and shared evaluation; PR #6 preserves the next integrity
+increment. The current real-data milestone is recorded above.
 
 ## Current honest resume status
 
 Safe to claim now, after independently verifying the repository:
 
 - built a reproducible preprocessing pipeline for a large arXiv metadata dump;
-- implemented deterministic balanced sampling and stratified dataset splitting;
+- implemented seeded capped sampling and stratified dataset splitting, with
+  observed equal 7,000-per-class counts in the first curated real-data run;
 - built path-safe configuration and parquet dataset-loading utilities;
 - added automated unit tests around the data pipeline.
 
@@ -107,7 +133,8 @@ Those are project goals, not current results.
 
 The next core milestone should be a complete classical baseline and evaluation harness before adding a Transformer:
 
-1. implement shared evaluation utilities;
+1. use the verified real-data configuration and complete-bundle loader with the
+   already implemented shared evaluation utilities;
 2. implement TF-IDF + Logistic Regression and Linear SVM pipelines;
 3. add a baseline training script that fits only on the train split;
 4. save validation/test metrics, confusion matrices, and prediction artifacts;

@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "date_local": "2026-10-04",
+  "timezone": "Asia/Shanghai",
+  "full_suite_command": "python -B -m pytest -q -p no:cacheprovider -ra",
+  "full_suite_results": [
+    {
+      "scope": "PR 5 exact head before merging",
+      "passed": 63,
+      "seconds": 5.15,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "scope": "integrity branch before rebase",
+      "passed": 128,
+      "seconds": 10.52,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "scope": "integrity branch after merge and rebase",
+      "passed": 128,
+      "seconds": 9.48,
+      "failures": 0,
+      "skipped": 0
+    },
+    {
+      "scope": "final real-data validation code",
+      "passed": 137,
+      "seconds": 17.74,
+      "failures": 0,
+      "skipped": 0
+    }
+  ],
+  "focused_tests": [
+    {
+      "command": "python -B -m pytest -q -p no:cacheprovider tests/test_profile.py -ra",
+      "results": [
+        "4 passed in 4.55s",
+        "4 passed in 2.41s",
+        "4 passed in 2.61s"
+      ]
+    },
+    {
+      "command": "python -B -m pytest -q -p no:cacheprovider tests/test_curate.py tests/test_profile.py -ra",
+      "results": [
+        "7 passed in 3.64s",
+        "8 passed in 4.24s",
+        "9 passed in 6.61s"
+      ]
+    }
+  ],
+  "final_test_counts_per_file": {
+    "test_config.py": 19,
+    "test_preprocess.py": 25,
+    "test_dataset.py": 21,
+    "test_evaluation.py": 42,
+    "test_integrity.py": 21,
+    "test_curate.py": 4,
+    "test_profile.py": 5
+  },
+  "dependency_check": {
+    "command": "python -m pip check",
+    "result": "No broken requirements found."
+  },
+  "diff_checks": [
+    "git diff main...HEAD --check (integrity)",
+    "git diff --check (real-data branch)"
+  ],
+  "direct_original_preprocessing_cli": {
+    "Command": "python -B -m src.data.preprocess",
+    "ExitCode": 1,
+    "Seconds": 125.531038
+  },
+  "direct_curated_preprocessing_cli": {
+    "Command": "python -B -m src.data.preprocess --config config/real_data.yaml",
+    "ExitCode": 0,
+    "Seconds": 48.1392373
+  },
+  "public_interfaces": {
+    "default_load_splits": "passed",
+    "configured_load_splits": "passed",
+    "integer_label_interface": "passed",
+    "rows": {
+      "train": 44800,
+      "val": 5600,
+      "test": 5600
+    }
+  },
+  "original_raw_sha256": "b5c73be5958b20f4c07ea30a9352941bddfe59fed943dde6614e6d3415347c88",
+  "curated_source_sha256": "d0100471cc2da0ec4d998e5754c79fef0f9bef2271c69fe8efd861a90c66ae68",
+  "curation_repeat_status": "passed",
+  "preprocessing_repeat_status": "passed",
+  "raw_archives_and_parquet_committed": false,
+  "model_training_started": false,
+  "integrity_pr": "https://github.com/ZhangHanai/arxiv-abstract-classification/pull/6",
+  "real_validation_branch": "codex/real-data-validation",
+  "files_changed_after_integrity_branch": [
+    "README.md",
+    "PROJECT_STATUS.md",
+    "data/README.md",
+    "REAL_DATA_REPORT.md",
+    "config/real_data.yaml",
+    "src/data/curate.py",
+    "src/data/profile.py",
+    "tests/test_curate.py",
+    "tests/test_profile.py",
+    "results/real_data_validation/source_manifest.json",
+    "results/real_data_validation/curation_report.json",
+    "results/real_data_validation/curation_runtime_manifest.json",
+    "results/real_data_validation/curation_reproducibility.json",
+    "results/real_data_validation/profile.json",
+    "results/real_data_validation/run_manifest.json",
+    "results/real_data_validation/verification.json",
+    "results/real_data_validation/unmodified_snapshot_rejection/profile.json",
+    "results/real_data_validation/unmodified_snapshot_rejection/run_manifest.json"
+  ]
+}

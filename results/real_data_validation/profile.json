@@ -1,0 +1,909 @@
+{
+  "schema_version": 1,
+  "preprocessing": {
+    "status": "passed",
+    "public_load_splits": "passed"
+  },
+  "source": {
+    "filename": "arxiv-metadata-oai-snapshot.curated.jsonl",
+    "bytes": 1108749510,
+    "sha256": "d0100471cc2da0ec4d998e5754c79fef0f9bef2271c69fe8efd861a90c66ae68"
+  },
+  "configuration": {
+    "seed": 42,
+    "classes": [
+      "cs.AI",
+      "cs.LG",
+      "cs.CL",
+      "cs.CV",
+      "cs.CR",
+      "cs.RO",
+      "cs.DS",
+      "cs.SE"
+    ],
+    "data": {
+      "raw_filename": "arxiv-metadata-oai-snapshot.curated.jsonl",
+      "decode_errors": "strict",
+      "samples_per_class": 7000,
+      "max_seq_length": 256,
+      "splits": {
+        "train": 0.8,
+        "val": 0.1,
+        "test": 0.1
+      }
+    }
+  },
+  "input_counts": {
+    "lines": 568667,
+    "blank_lines": 0,
+    "invalid_utf8_lines": 0,
+    "malformed_json_lines": 0,
+    "non_object_lines": 0,
+    "records": 568667
+  },
+  "sampling_counts": {
+    "non_target_records": 0,
+    "invalid_id_records": 0,
+    "invalid_abstract_records": 0,
+    "eligible_per_class": {
+      "cs.AI": 47557,
+      "cs.LG": 146658,
+      "cs.CL": 89091,
+      "cs.CV": 162285,
+      "cs.CR": 36202,
+      "cs.RO": 44756,
+      "cs.DS": 19210,
+      "cs.SE": 22908
+    },
+    "retained_per_class": {
+      "cs.AI": 7000,
+      "cs.LG": 7000,
+      "cs.CL": 7000,
+      "cs.CV": 7000,
+      "cs.CR": 7000,
+      "cs.RO": 7000,
+      "cs.DS": 7000,
+      "cs.SE": 7000
+    }
+  },
+  "shortfalls_from_cap": {
+    "cs.AI": 0,
+    "cs.LG": 0,
+    "cs.CL": 0,
+    "cs.CV": 0,
+    "cs.CR": 0,
+    "cs.RO": 0,
+    "cs.DS": 0,
+    "cs.SE": 0
+  },
+  "selected_pool_validation": "passed",
+  "selected_pool_duplicates": {
+    "ids": {
+      "repeated_groups": 0,
+      "extra_rows": 0
+    },
+    "exact_text": {
+      "repeated_groups": 0,
+      "extra_rows": 0
+    },
+    "normalized_text": {
+      "repeated_groups": 0,
+      "extra_rows": 0
+    }
+  },
+  "abstract_lengths_scope": "selected cleaned model text; whitespace tokens are not model tokenizer tokens",
+  "abstract_lengths": {
+    "overall": {
+      "characters": {
+        "count": 56000,
+        "min": 25,
+        "max": 2914,
+        "mean": 1241.109125,
+        "std_population": 364.85738672158715,
+        "p05": 614.0,
+        "median": 1249.0,
+        "p95": 1845.0,
+        "p99": 1912.0
+      },
+      "whitespace_tokens": {
+        "count": 56000,
+        "min": 3,
+        "max": 416,
+        "mean": 174.79157142857142,
+        "std_population": 51.13180398694323,
+        "p05": 90.0,
+        "median": 174.0,
+        "p95": 260.0,
+        "p99": 287.0
+      }
+    },
+    "per_class": {
+      "cs.AI": {
+        "characters": {
+          "count": 7000,
+          "min": 25,
+          "max": 2573,
+          "mean": 1244.2114285714285,
+          "std_population": 368.1105608539979,
+          "p05": 598.95,
+          "median": 1255.0,
+          "p95": 1842.0499999999993,
+          "p99": 1914.0
+        },
+        "whitespace_tokens": {
+          "count": 7000,
+          "min": 3,
+          "max": 394,
+          "mean": 172.22814285714287,
+          "std_population": 49.54759422710529,
+          "p05": 87.0,
+          "median": 173.0,
+          "p95": 252.0,
+          "p99": 281.0
+        }
+      },
+      "cs.LG": {
+        "characters": {
+          "count": 7000,
+          "min": 77,
+          "max": 1920,
+          "mean": 1245.7885714285715,
+          "std_population": 335.635692611948,
+          "p05": 687.0,
+          "median": 1245.5,
+          "p95": 1817.0,
+          "p99": 1910.0100000000002
+        },
+        "whitespace_tokens": {
+          "count": 7000,
+          "min": 12,
+          "max": 333,
+          "mean": 173.22985714285716,
+          "std_population": 46.5914694213086,
+          "p05": 97.0,
+          "median": 172.0,
+          "p95": 253.0,
+          "p99": 276.0
+        }
+      },
+      "cs.CL": {
+        "characters": {
+          "count": 7000,
+          "min": 120,
+          "max": 1920,
+          "mean": 1173.5034285714285,
+          "std_population": 326.62740500841414,
+          "p05": 644.0,
+          "median": 1163.0,
+          "p95": 1762.0499999999993,
+          "p99": 1906.0
+        },
+        "whitespace_tokens": {
+          "count": 7000,
+          "min": 14,
+          "max": 329,
+          "mean": 162.776,
+          "std_population": 44.30485746990471,
+          "p05": 92.0,
+          "median": 161.0,
+          "p95": 241.0,
+          "p99": 269.0
+        }
+      },
+      "cs.CV": {
+        "characters": {
+          "count": 7000,
+          "min": 99,
+          "max": 1920,
+          "mean": 1292.673,
+          "std_population": 309.65414635802034,
+          "p05": 765.0,
+          "median": 1294.5,
+          "p95": 1808.0999999999985,
+          "p99": 1910.0
+        },
+        "whitespace_tokens": {
+          "count": 7000,
+          "min": 17,
+          "max": 304,
+          "mean": 178.42757142857144,
+          "std_population": 42.02075214991871,
+          "p05": 108.0,
+          "median": 178.0,
+          "p95": 249.0,
+          "p99": 272.0
+        }
+      },
+      "cs.CR": {
+        "characters": {
+          "count": 7000,
+          "min": 61,
+          "max": 1920,
+          "mean": 1264.1677142857143,
+          "std_population": 382.68705736138816,
+          "p05": 583.0,
+          "median": 1286.0,
+          "p95": 1864.0499999999993,
+          "p99": 1913.0
+        },
+        "whitespace_tokens": {
+          "count": 7000,
+          "min": 9,
+          "max": 314,
+          "mean": 178.73314285714287,
+          "std_population": 53.37543778456414,
+          "p05": 87.0,
+          "median": 181.0,
+          "p95": 263.0,
+          "p99": 286.0100000000002
+        }
+      },
+      "cs.RO": {
+        "characters": {
+          "count": 7000,
+          "min": 60,
+          "max": 2012,
+          "mean": 1251.893142857143,
+          "std_population": 316.83666861894477,
+          "p05": 720.0,
+          "median": 1251.0,
+          "p95": 1793.0,
+          "p99": 1909.0
+        },
+        "whitespace_tokens": {
+          "count": 7000,
+          "min": 9,
+          "max": 307,
+          "mean": 173.90914285714285,
+          "std_population": 43.26173204190172,
+          "p05": 103.95000000000005,
+          "median": 172.0,
+          "p95": 247.0,
+          "p99": 273.0
+        }
+      },
+      "cs.DS": {
+        "characters": {
+          "count": 7000,
+          "min": 32,
+          "max": 2057,
+          "mean": 1172.3417142857143,
+          "std_population": 450.1243032476741,
+          "p05": 440.0,
+          "median": 1159.0,
+          "p95": 1887.0,
+          "p99": 1912.0100000000002
+        },
+        "whitespace_tokens": {
+          "count": 7000,
+          "min": 5,
+          "max": 361,
+          "mean": 177.08014285714285,
+          "std_population": 67.99210672660797,
+          "p05": 67.0,
+          "median": 175.0,
+          "p95": 284.0,
+          "p99": 307.0
+        }
+      },
+      "cs.SE": {
+        "characters": {
+          "count": 7000,
+          "min": 56,
+          "max": 2914,
+          "mean": 1284.294,
+          "std_population": 387.67245249197526,
+          "p05": 604.95,
+          "median": 1311.0,
+          "p95": 1879.0,
+          "p99": 1915.0
+        },
+        "whitespace_tokens": {
+          "count": 7000,
+          "min": 7,
+          "max": 416,
+          "mean": 181.94857142857143,
+          "std_population": 54.575425508077856,
+          "p05": 88.0,
+          "median": 185.0,
+          "p95": 266.0,
+          "p99": 287.0
+        }
+      }
+    },
+    "per_split": {
+      "train": {
+        "characters": {
+          "count": 44800,
+          "min": 25,
+          "max": 2914,
+          "mean": 1241.1294642857142,
+          "std_population": 364.6918361263562,
+          "p05": 616.0,
+          "median": 1248.0,
+          "p95": 1846.0,
+          "p99": 1912.0
+        },
+        "whitespace_tokens": {
+          "count": 44800,
+          "min": 3,
+          "max": 416,
+          "mean": 174.82627232142858,
+          "std_population": 51.111862806852926,
+          "p05": 90.0,
+          "median": 174.0,
+          "p95": 260.0,
+          "p99": 287.0
+        }
+      },
+      "val": {
+        "characters": {
+          "count": 5600,
+          "min": 42,
+          "max": 1983,
+          "mean": 1238.9380357142857,
+          "std_population": 365.71932482886984,
+          "p05": 602.95,
+          "median": 1249.0,
+          "p95": 1840.0,
+          "p99": 1911.0
+        },
+        "whitespace_tokens": {
+          "count": 5600,
+          "min": 7,
+          "max": 338,
+          "mean": 174.40928571428572,
+          "std_population": 51.31397734456341,
+          "p05": 89.0,
+          "median": 173.5,
+          "p95": 261.0,
+          "p99": 287.0
+        }
+      },
+      "test": {
+        "characters": {
+          "count": 5600,
+          "min": 143,
+          "max": 2283,
+          "mean": 1243.1175,
+          "std_population": 365.3062669784766,
+          "p05": 612.95,
+          "median": 1252.0,
+          "p95": 1849.0500000000002,
+          "p99": 1911.0
+        },
+        "whitespace_tokens": {
+          "count": 5600,
+          "min": 22,
+          "max": 367,
+          "mean": 174.89625,
+          "std_population": 51.1071680764513,
+          "p05": 89.94999999999999,
+          "median": 175.0,
+          "p95": 259.0,
+          "p99": 286.0
+        }
+      }
+    }
+  },
+  "source_audit": {
+    "invalid_or_missing_categories": 0,
+    "multiple_category_tokens": 302515,
+    "category_tokens_not_lexicographically_sorted": 168809,
+    "selected_source_occurrences": 56000,
+    "selected_first_token_label_mismatches": 0,
+    "selected_cleaned_text_mismatches": 0,
+    "selected_multiple_category_tokens": 28131,
+    "selected_multiple_configured_category_tokens": 17777,
+    "selected_at_most_30_whitespace_tokens": 127,
+    "selected_more_than_1000_whitespace_tokens": 0,
+    "selected_with_withdrawal_marker": 116,
+    "selected_ids_not_found_in_source": 0
+  },
+  "source_audit_scope": "selected samples; split assignments exist only if preprocessing passed",
+  "source_audit_thresholds": {
+    "very_short_max_whitespace_tokens": 30,
+    "very_long_min_whitespace_tokens_exclusive": 1000,
+    "withdrawal_marker": "case-insensitive substring 'withdrawn' in title/abstract/comments; heuristic, not confirmed withdrawal"
+  },
+  "representative_examples": [
+    {
+      "id": "0906.2824",
+      "label": "cs.AI",
+      "selection": [
+        "shortest"
+      ],
+      "title": "What Does Artificial Life Tell Us About Death?",
+      "source_categories": "cs.AI cs.OH",
+      "whitespace_tokens": 3,
+      "characters": 25,
+      "text_excerpt": "Short philosophical essay",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2010.07533",
+      "label": "cs.AI",
+      "selection": [
+        "median_length"
+      ],
+      "title": "TDRE: A Tensor Decomposition Based Approach for Relation Extraction",
+      "source_categories": "cs.AI",
+      "whitespace_tokens": 173,
+      "characters": 1263,
+      "text_excerpt": "Extracting entity pairs along with relation types from unstructured texts is a fundamental subtask of information extraction. Most existing joint models rely on fine-grained labeling scheme or focus on shared embedding parameters. These met",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "1304.1491",
+      "label": "cs.AI",
+      "selection": [
+        "longest"
+      ],
+      "title": "Lp : A Logic for Statistical Information",
+      "source_categories": "cs.AI",
+      "whitespace_tokens": 394,
+      "characters": 2573,
+      "text_excerpt": "This extended abstract presents a logic, called Lp, that is capable of representing and reasoning with a wide variety of both qualitative and quantitative statistical information. The advantage of this logical formalism is that it offers a ",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "0902.1258",
+      "label": "cs.LG",
+      "selection": [
+        "shortest"
+      ],
+      "title": "Extraction de concepts sous contraintes dans des donn\\'ees d'expression\n  de g\\`enes",
+      "source_categories": "cs.LG",
+      "whitespace_tokens": 12,
+      "characters": 77,
+      "text_excerpt": "In this paper, we propose a technique to extract constrained formal concepts.",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2406.01411",
+      "label": "cs.LG",
+      "selection": [
+        "median_length"
+      ],
+      "title": "Using Constraints to Discover Sparse and Alternative Subgroup Descriptions",
+      "source_categories": "cs.LG",
+      "whitespace_tokens": 172,
+      "characters": 1229,
+      "text_excerpt": "Subgroup-discovery methods allow users to obtain simple descriptions of interesting regions in a dataset. Using constraints in subgroup discovery can enhance interpretability even further. In this article, we focus on two types of constrain",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2405.07937",
+      "label": "cs.LG",
+      "selection": [
+        "longest"
+      ],
+      "title": "Active Learning with Simple Questions",
+      "source_categories": "cs.LG cs.DS",
+      "whitespace_tokens": 333,
+      "characters": 1893,
+      "text_excerpt": "We consider an active learning setting where a learner is presented with a pool S of n unlabeled examples belonging to a domain X and asks queries to find the underlying labeling that agrees with a target concept h^* \\in H. In contrast to t",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "0911.5568",
+      "label": "cs.CL",
+      "selection": [
+        "shortest"
+      ],
+      "title": "Acquisition d'informations lexicales \\`a partir de corpus C\\'edric\n  Messiant et Thierry Poibeau",
+      "source_categories": "cs.CL cs.AI",
+      "whitespace_tokens": 14,
+      "characters": 120,
+      "text_excerpt": "This paper is about automatic acquisition of lexical information from corpora, especially subcategorization acquisition.",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2208.09770",
+      "label": "cs.CL",
+      "selection": [
+        "median_length"
+      ],
+      "title": "Z-Code++: A Pre-trained Language Model Optimized for Abstractive\n  Summarization",
+      "source_categories": "cs.CL cs.AI",
+      "whitespace_tokens": 161,
+      "characters": 1120,
+      "text_excerpt": "This paper presents Z-Code++, a new pre-trained language model optimized for abstractive text summarization. The model extends the state of the art encoder-decoder model using three techniques. First, we use a two-phase pre-training process",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2609.37993",
+      "label": "cs.CL",
+      "selection": [
+        "longest"
+      ],
+      "title": "BITEM at the NTCIR-19 R2C2 Task: Predicting Confidence from Agentic RAG Pipeline Signals",
+      "source_categories": "cs.CL cs.AI cs.IR",
+      "whitespace_tokens": 329,
+      "characters": 1881,
+      "text_excerpt": "The BITEM team entered both subtasks of the NTCIR-19 R2C2 task with a single agentic pipeline, in which a model searches, reads and records evidence over a movie corpus while an orchestrator holds the record and rules on what may be submitt",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "1712.05015",
+      "label": "cs.CV",
+      "selection": [
+        "shortest"
+      ],
+      "title": "Learning Low-shot facial representations via 2D warping",
+      "source_categories": "cs.CV cs.LG",
+      "whitespace_tokens": 17,
+      "characters": 99,
+      "text_excerpt": "In this work, we mainly study the influence of the 2D warping module for one-shot face recognition.",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2203.07740",
+      "label": "cs.CV",
+      "selection": [
+        "median_length"
+      ],
+      "title": "Exact Feature Distribution Matching for Arbitrary Style Transfer and\n  Domain Generalization",
+      "source_categories": "cs.CV",
+      "whitespace_tokens": 178,
+      "characters": 1271,
+      "text_excerpt": "Arbitrary style transfer (AST) and domain generalization (DG) are important yet challenging visual learning tasks, which can be cast as a feature distribution matching problem. With the assumption of Gaussian feature distribution, conventio",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2609.34032",
+      "label": "cs.CV",
+      "selection": [
+        "longest"
+      ],
+      "title": "Re:Cognize -- Open-Set Comic Character Re-Identification",
+      "source_categories": "cs.CV cs.MM",
+      "whitespace_tokens": 304,
+      "characters": 1769,
+      "text_excerpt": "A manga reader meets a character on one page and knows them on sight a hundred pages later, without ever being handed a cast list. Re-identifying comic characters demands the same, open-set and sequential: pages arrive as a stream in readin",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "1502.05102",
+      "label": "cs.CR",
+      "selection": [
+        "shortest"
+      ],
+      "title": "Emergent Behavior in Cybersecurity",
+      "source_categories": "cs.CR",
+      "whitespace_tokens": 9,
+      "characters": 61,
+      "text_excerpt": "We argue that emergent behavior is inherent to cybersecurity.",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2401.00148",
+      "label": "cs.CR",
+      "selection": [
+        "median_length"
+      ],
+      "title": "TPatch: A Triggered Physical Adversarial Patch",
+      "source_categories": "cs.CR cs.CV",
+      "whitespace_tokens": 181,
+      "characters": 1279,
+      "text_excerpt": "Autonomous vehicles increasingly utilize the vision-based perception module to acquire information about driving environments and detect obstacles. Correct detection and classification are important to ensure safe driving decisions. Existin",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2608.16190",
+      "label": "cs.CR",
+      "selection": [
+        "longest"
+      ],
+      "title": "Decorrelation Is Not Complementarity: Skill, Not Lineage, Governs Trusted-Monitor Ensembles",
+      "source_categories": "cs.CR cs.LG",
+      "whitespace_tokens": 314,
+      "characters": 1892,
+      "text_excerpt": "Trusted monitoring has a cheap, trusted model score a stronger untrusted model's actions, and a diverse ensemble of them beats a single stronger monitor at matched cost. They are built by minimising average pairwise correlation, and that pa",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "0808.1661",
+      "label": "cs.RO",
+      "selection": [
+        "shortest"
+      ],
+      "title": "Medical robotics: where we come from, where we are and where we could go",
+      "source_categories": "cs.RO",
+      "whitespace_tokens": 9,
+      "characters": 60,
+      "text_excerpt": "This short note presents a viewpoint about medical robotics.",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2609.27154",
+      "label": "cs.RO",
+      "selection": [
+        "median_length"
+      ],
+      "title": "HINT-Blimp: Human INTent Inference from Multimodal Cues for Robotic Blimps",
+      "source_categories": "cs.RO",
+      "whitespace_tokens": 172,
+      "characters": 1197,
+      "text_excerpt": "In human-robot interaction, traditional interfaces such as joysticks and handheld tablets introduce latency into navigation tasks and require the operator's explicit attention on the device, instead of the robot. We propose a new human-robo",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2111.03931",
+      "label": "cs.RO",
+      "selection": [
+        "longest"
+      ],
+      "title": "Swarm Control of Magnetically Actuated Millirobots",
+      "source_categories": "cs.RO cs.SY eess.SY",
+      "whitespace_tokens": 307,
+      "characters": 1907,
+      "text_excerpt": "Small-size robots offer access to spaces that are inaccessible to larger ones. This type of access is crucial in applications such as drug delivery, environmental detection, and collection of small samples. However, there are some tasks tha",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "1102.1124",
+      "label": "cs.DS",
+      "selection": [
+        "shortest"
+      ],
+      "title": "A Polynomial Time Algorithm for a Special Case of Linear Integer\n  Programming",
+      "source_categories": "cs.DS",
+      "whitespace_tokens": 5,
+      "characters": 32,
+      "text_excerpt": "This article has been withdrawn.",
+      "withdrawal_marker": true
+    },
+    {
+      "id": "2607.24827",
+      "label": "cs.DS",
+      "selection": [
+        "median_length"
+      ],
+      "title": "Stronger Memory-Query Tradeoffs for Convex Optimization: The Limitations of Subquadratic Memory",
+      "source_categories": "cs.DS cs.CC cs.LG math.OC",
+      "whitespace_tokens": 175,
+      "characters": 1366,
+      "text_excerpt": "We prove two lower bounds for the first order oracle complexity of minimizing a $d$-dimensional $1$-Lipschitz convex function over the unit ball with $m$ bits of memory. We first show that any such (possibly randomized) algorithm must make ",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2307.01318",
+      "label": "cs.DS",
+      "selection": [
+        "longest"
+      ],
+      "title": "A contraction-recursive algorithm for treewidth",
+      "source_categories": "cs.DS",
+      "whitespace_tokens": 361,
+      "characters": 1870,
+      "text_excerpt": "Let tw(G) denote the treewidth of graph G. Given a graph G and a positive integer k such that tw(G) <= k + 1, we are to decide if tw(G) <= k. We give a certifying algorithm RTW (\"R\" for recursive) for this task: it returns one or more tree-",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "1301.5878",
+      "label": "cs.SE",
+      "selection": [
+        "shortest"
+      ],
+      "title": "How do you know your spreadsheet is right?",
+      "source_categories": "cs.SE",
+      "whitespace_tokens": 7,
+      "characters": 56,
+      "text_excerpt": "Principles, Techniques and Practice of Spreadsheet Style",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2301.13615",
+      "label": "cs.SE",
+      "selection": [
+        "median_length"
+      ],
+      "title": "Property-Based Mutation Testing",
+      "source_categories": "cs.SE",
+      "whitespace_tokens": 185,
+      "characters": 1246,
+      "text_excerpt": "Mutation testing is an established software quality assurance technique for the assessment of test suites. While it is well-suited to estimate the general fault-revealing capability of a test suite, it is not practical and informative when ",
+      "withdrawal_marker": false
+    },
+    {
+      "id": "2512.23498",
+      "label": "cs.SE",
+      "selection": [
+        "longest"
+      ],
+      "title": "Adaptable Teastore with Energy Consumption Awareness: A Case Study",
+      "source_categories": "cs.SE",
+      "whitespace_tokens": 416,
+      "characters": 2914,
+      "text_excerpt": "[Context and Motivation] Global energy consumption has been steadily increasing in recent years, with data centers emerging as major contributors. This growth is largely driven by the widespread migration of applications to the Cloud, along",
+      "withdrawal_marker": false
+    }
+  ],
+  "label_rule": "first whitespace-separated category token; authoritative primary-category semantics not established by the Kaggle data card",
+  "reproducibility": {
+    "repeat_requested": true,
+    "status": "passed",
+    "preprocessing_report_identical": true,
+    "ordered_rows_identical": {
+      "train": true,
+      "val": true,
+      "test": true
+    },
+    "parquet_bytes_identical_in_this_environment": {
+      "train": true,
+      "val": true,
+      "test": true
+    }
+  },
+  "source_manifest_identity_check": "passed",
+  "selected_pool_matches_written_rows": true,
+  "integrity": {
+    "splits": {
+      "train": {
+        "rows": 44800,
+        "per_class": {
+          "cs.AI": 5600,
+          "cs.LG": 5600,
+          "cs.CL": 5600,
+          "cs.CV": 5600,
+          "cs.CR": 5600,
+          "cs.RO": 5600,
+          "cs.DS": 5600,
+          "cs.SE": 5600
+        },
+        "unknown_labels": 0,
+        "null_required_values": 0,
+        "invalid_required_values": 0,
+        "duplicates": {
+          "ids": {
+            "repeated_groups": 0,
+            "extra_rows": 0
+          },
+          "exact_text": {
+            "repeated_groups": 0,
+            "extra_rows": 0
+          },
+          "normalized_text": {
+            "repeated_groups": 0,
+            "extra_rows": 0
+          }
+        }
+      },
+      "val": {
+        "rows": 5600,
+        "per_class": {
+          "cs.AI": 700,
+          "cs.LG": 700,
+          "cs.CL": 700,
+          "cs.CV": 700,
+          "cs.CR": 700,
+          "cs.RO": 700,
+          "cs.DS": 700,
+          "cs.SE": 700
+        },
+        "unknown_labels": 0,
+        "null_required_values": 0,
+        "invalid_required_values": 0,
+        "duplicates": {
+          "ids": {
+            "repeated_groups": 0,
+            "extra_rows": 0
+          },
+          "exact_text": {
+            "repeated_groups": 0,
+            "extra_rows": 0
+          },
+          "normalized_text": {
+            "repeated_groups": 0,
+            "extra_rows": 0
+          }
+        }
+      },
+      "test": {
+        "rows": 5600,
+        "per_class": {
+          "cs.AI": 700,
+          "cs.LG": 700,
+          "cs.CL": 700,
+          "cs.CV": 700,
+          "cs.CR": 700,
+          "cs.RO": 700,
+          "cs.DS": 700,
+          "cs.SE": 700
+        },
+        "unknown_labels": 0,
+        "null_required_values": 0,
+        "invalid_required_values": 0,
+        "duplicates": {
+          "ids": {
+            "repeated_groups": 0,
+            "extra_rows": 0
+          },
+          "exact_text": {
+            "repeated_groups": 0,
+            "extra_rows": 0
+          },
+          "normalized_text": {
+            "repeated_groups": 0,
+            "extra_rows": 0
+          }
+        }
+      }
+    },
+    "cross_split_overlaps": {
+      "train/val": {
+        "ids": 0,
+        "exact_text": 0,
+        "normalized_text": 0
+      },
+      "train/test": {
+        "ids": 0,
+        "exact_text": 0,
+        "normalized_text": 0
+      },
+      "val/test": {
+        "ids": 0,
+        "exact_text": 0,
+        "normalized_text": 0
+      }
+    },
+    "independent_row_and_overlap_checks_passed": true,
+    "per_class_total": {
+      "cs.AI": 7000,
+      "cs.LG": 7000,
+      "cs.CL": 7000,
+      "cs.CV": 7000,
+      "cs.CR": 7000,
+      "cs.RO": 7000,
+      "cs.DS": 7000,
+      "cs.SE": 7000
+    },
+    "total_rows": 56000,
+    "expected_per_class_split_counts": {
+      "cs.AI": {
+        "train": 5600,
+        "val": 700,
+        "test": 700
+      },
+      "cs.LG": {
+        "train": 5600,
+        "val": 700,
+        "test": 700
+      },
+      "cs.CL": {
+        "train": 5600,
+        "val": 700,
+        "test": 700
+      },
+      "cs.CV": {
+        "train": 5600,
+        "val": 700,
+        "test": 700
+      },
+      "cs.CR": {
+        "train": 5600,
+        "val": 700,
+        "test": 700
+      },
+      "cs.RO": {
+        "train": 5600,
+        "val": 700,
+        "test": 700
+      },
+      "cs.DS": {
+        "train": 5600,
+        "val": 700,
+        "test": 700
+      },
+      "cs.SE": {
+        "train": 5600,
+        "val": 700,
+        "test": 700
+      }
+    },
+    "split_rounding_matches": true,
+    "every_class_in_every_split": true
+  },
+  "ready_for_baseline_data_input": true
+}
