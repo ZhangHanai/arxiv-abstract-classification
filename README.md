@@ -14,7 +14,12 @@ The project will use the Cornell University arXiv metadata dataset distributed t
 
 ## Classification Task
 
-The exact target-label definition, category selection criteria, and train/validation/test splitting strategy will be specified after exploratory data analysis.
+The current configuration selects eight computer-science categories and uses the
+first token in each record's `categories` field as its label. Defaults request
+up to 7,000 samples per class and seeded 80/10/10 splits. See
+[`data/README.md`](data/README.md) for rounding, shortfall, encoding, and duplicate
+rejection rules. These defaults have been tested with synthetic data; a real
+snapshot and its category-ordering semantics have not yet been audited.
 
 ## Planned Models
 
@@ -22,7 +27,9 @@ Planned model families include TF-IDF-based classical machine learning baselines
 
 ## Evaluation
 
-Evaluation will use appropriate classification metrics and clearly documented validation procedures. No experimental results are reported yet.
+`src/evaluation.py` provides shared accuracy, macro/support-weighted F1,
+per-class scores, ordered confusion matrices, and aligned prediction artifacts.
+No model has been trained and no experimental results are reported yet.
 
 ## Error Analysis
 
@@ -38,7 +45,19 @@ The repository is organized into directories for configuration, data documentati
 
 ## Reproducibility
 
-Dependencies and reproducibility instructions will be expanded as the data pipeline and experiments are implemented.
+Install the current dependencies and run tests from the repository root:
+
+```sh
+python -m pip install -r requirements.txt
+python -B -m pytest -q -p no:cacheprovider
+```
+
+After manually obtaining the raw snapshot, run `python -m src.data.preprocess`.
+Use `src.data.dataset.load_splits()` to validate the complete dataset before
+training. Configuration/data paths, explicit encoding policies, counted filtering,
+source fingerprints, and failure behavior are documented in
+[`data/README.md`](data/README.md). Dependencies remain unpinned; real-data
+verification, baseline training, and CI remain unfinished.
 
 ## Limitations and Future Work
 

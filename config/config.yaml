@@ -12,6 +12,7 @@ classes:
 
 data:
   raw_filename: arxiv-metadata-oai-snapshot.json
+  decode_errors: strict
   samples_per_class: 7000
   max_seq_length: 256
   splits:
